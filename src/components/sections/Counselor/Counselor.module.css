@@ -1,0 +1,164 @@
+.counselor {
+  padding: 6rem 0;
+  background-color: white;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #2c5f2d; /* Deep Forest Green */
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #8faf84; /* Sage Green */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.profileSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  background-color: #f3eed9; /* Warm Beige */
+  /* 이미지 추가 시 아래 속성 사용 */
+  /* background-image: url('/path-to-image.jpg');
+  background-size: cover;
+  background-position: center; */
+}
+
+.profileInfo {
+  padding: 2rem;
+  background-color: #f3eed9; /* Warm Beige */
+  border-radius: 16px;
+}
+
+.name {
+  font-size: 2rem;
+  color: #2c5f2d; /* Deep Forest Green */
+  margin-bottom: 0.5rem;
+}
+
+.role {
+  font-size: 1.1rem;
+  color: #7b4b3a; /* Earth Brown */
+  margin-bottom: 2rem;
+}
+
+.specialties h4 {
+  color: #2c5f2d; /* Deep Forest Green */
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.specialtyList {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.specialtyItem {
+  color: #8faf84; /* Sage Green */
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.specialtyItem::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #c6d7af; /* Light Moss */
+}
+
+.careerSection {
+  padding: 2rem;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.careerTitle {
+  color: #2c5f2d; /* Deep Forest Green */
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.timelineItem {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #c6d7af; /* Light Moss */
+}
+
+.year {
+  color: #7b4b3a; /* Earth Brown */
+  font-weight: 600;
+}
+
+.description {
+  color: #8faf84; /* Sage Green */
+}
+
+@media (max-width: 968px) {
+  .content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .specialtyList {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .counselor {
+    padding: 4rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .timelineItem {
+    grid-template-columns: 60px 1fr;
+  }
+}

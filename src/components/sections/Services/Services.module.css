@@ -1,0 +1,113 @@
+.services {
+  padding: 6rem 0;
+  background-color: #f3eed9; /* Warm Beige */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #2c5f2d; /* Deep Forest Green */
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #8faf84; /* Sage Green */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  color: #2c5f2d; /* Deep Forest Green */
+  margin-bottom: 1rem;
+}
+
+.cardDescription {
+  color: #8faf84; /* Sage Green */
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+  flex-grow: 1;
+}
+
+.benefitItem {
+  color: #7b4b3a; /* Earth Brown */
+  margin-bottom: 0.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.benefitItem::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #c6d7af; /* Light Moss */
+}
+
+.cardButton {
+  background-color: #7b4b3a; /* Earth Brown */
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: auto;
+}
+
+.cardButton:hover {
+  background-color: #6a4033;
+}
+
+@media (max-width: 768px) {
+  .services {
+    padding: 4rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+}
