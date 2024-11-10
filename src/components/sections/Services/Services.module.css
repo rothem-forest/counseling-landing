@@ -1,12 +1,16 @@
 .services {
   padding: 6rem 0;
-  background-color: #f3eed9; /* Warm Beige */
+  background-color: var(--color-white);
+  position: relative;
+  overflow: hidden;
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .header {
@@ -16,13 +20,13 @@
 
 .title {
   font-size: 2.5rem;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -31,34 +35,44 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 2rem;
+  perspective: 1000px;
 }
 
 .card {
-  background: white;
-  border-radius: 16px;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.cardContent {
   padding: 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  background-color: var(--color-background);
+  height: 100%;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  transition: all 0.3s ease;
+  transform-style: preserve-3d;
 }
 
 .cardIcon {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
+  transform: translateZ(20px);
 }
 
 .cardTitle {
   font-size: 1.5rem;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   margin-bottom: 1rem;
+  transform: translateZ(30px);
 }
 
 .cardDescription {
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   margin-bottom: 1.5rem;
   line-height: 1.6;
+  transform: translateZ(25px);
 }
 
 .benefitsList {
@@ -66,10 +80,11 @@
   padding: 0;
   margin: 0 0 1.5rem 0;
   flex-grow: 1;
+  transform: translateZ(20px);
 }
 
 .benefitItem {
-  color: #7b4b3a; /* Earth Brown */
+  color: var(--color-cta);
   margin-bottom: 0.5rem;
   padding-left: 1.5rem;
   position: relative;
@@ -79,23 +94,25 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #c6d7af; /* Light Moss */
+  color: var(--color-accent);
 }
 
 .cardButton {
-  background-color: #7b4b3a; /* Earth Brown */
-  color: white;
+  background-color: var(--color-cta);
+  color: var(--color-white);
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: auto;
+  transform: translateZ(40px);
+  align-self: flex-start;
+  transition: var(--transition-base);
 }
 
 .cardButton:hover {
-  background-color: #6a4033;
+  transform: translateZ(40px) scale(1.05);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 768px) {

@@ -6,7 +6,7 @@
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   z-index: 100;
-  border-bottom: 1px solid rgba(198, 215, 175, 0.2); /* Light Moss */
+  border-bottom: 1px solid rgba(var(--color-accent), 0.2);
 }
 
 .container {
@@ -21,7 +21,7 @@
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   text-decoration: none;
 }
 
@@ -31,25 +31,27 @@
 }
 
 .navItem {
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 1rem;
 }
 
 .ctaButton {
-  background-color: #7b4b3a; /* Earth Brown */
-  color: white;
+  background-color: var(--color-cta);
+  color: var(--color-white);
   border: none;
   padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .ctaButton:hover {
-  background-color: #6a4033;
+  background-color: var(--color-cta);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 768px) {

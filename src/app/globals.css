@@ -1,6 +1,36 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Modern & Fresh Color Palette */
+  --color-primary: #2c5f2d; /* Deep Forest Green - 메인 컬러 */
+  --color-background: #f8f9f6; /* Pearl White - 배경 */
+  --color-text: #739e82; /* Forest Sage - 서브 텍스트 */
+  --color-accent: #e1ede3; /* Mint Frost - 연한 포인트 */
+  --color-cta: #1b3d3d; /* Navy Pine - CTA 버튼 */
+  --color-highlight: #ddb771; /* Sunlit Gold - 액센트 */
+
+  /* Additional Colors */
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-error: #e74c3c;
+  --color-success: #27ae60;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* Transitions */
+  --transition-base: all 0.3s ease;
+  --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -39,4 +69,50 @@ a {
   html {
     color-scheme: dark;
   }
+}
+
+/* Base styles */
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--color-primary);
+}
+
+p {
+  color: var(--color-text);
+}
+
+/* Buttons */
+button {
+  transition: var(--transition-base);
+}
+
+.cta-button {
+  background-color: var(--color-cta);
+  color: var(--color-white);
+  border-radius: var(--radius-md);
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  transition: var(--transition-base);
+}
+
+a:hover {
+  color: var(--color-highlight);
 }

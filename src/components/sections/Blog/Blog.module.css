@@ -1,6 +1,6 @@
 .blog {
   padding: 6rem 0;
-  background-color: white;
+  background-color: var(--color-white);
 }
 
 .container {
@@ -16,13 +16,13 @@
 
 .title {
   font-size: 2.5rem;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -35,10 +35,10 @@
 }
 
 .card {
-  background-color: #f3eed9; /* Warm Beige */
-  border-radius: 16px;
+  background-color: var(--color-background);
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .cardContent {
@@ -53,25 +53,25 @@
 }
 
 .category {
-  color: #7b4b3a; /* Earth Brown */
+  color: var(--color-cta);
   font-weight: 600;
   font-size: 0.9rem;
 }
 
 .readTime {
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   font-size: 0.9rem;
 }
 
 .cardTitle {
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   font-size: 1.5rem;
   margin-bottom: 1rem;
   line-height: 1.4;
 }
 
 .excerpt {
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   margin-bottom: 2rem;
   line-height: 1.6;
 }
@@ -83,23 +83,23 @@
 }
 
 .date {
-  color: #c6d7af; /* Light Moss */
+  color: var(--color-accent);
   font-size: 0.9rem;
 }
 
 .readMore {
   background: none;
   border: none;
-  color: #7b4b3a; /* Earth Brown */
+  color: var(--color-cta);
   font-weight: 600;
   cursor: pointer;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
+  border-radius: var(--radius-md);
+  transition: var(--transition-base);
 }
 
 .readMore:hover {
-  background-color: rgba(123, 75, 58, 0.1);
+  background-color: rgba(var(--color-cta), 0.1);
 }
 
 .viewAll {
@@ -107,13 +107,19 @@
 }
 
 .viewAllButton {
-  background-color: #7b4b3a; /* Earth Brown */
-  color: white;
+  background-color: var(--color-cta);
+  color: var(--color-white);
   border: none;
   padding: 1rem 2rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.viewAllButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 @media (max-width: 968px) {

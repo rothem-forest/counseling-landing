@@ -1,6 +1,6 @@
 .reviews {
   padding: 6rem 0;
-  background-color: #f3eed9; /* Warm Beige */
+  background-color: var(--color-background);
 }
 
 .container {
@@ -16,13 +16,13 @@
 
 .title {
   font-size: 2.5rem;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -40,10 +40,10 @@
 }
 
 .reviewCard {
-  background: white;
+  background: var(--color-white);
   padding: 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
   display: flex;
   flex-direction: column;
 }
@@ -56,12 +56,12 @@
 }
 
 .program {
-  color: #7b4b3a; /* Earth Brown */
+  color: var(--color-cta);
   font-weight: 600;
 }
 
 .reviewText {
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2rem;
@@ -76,12 +76,12 @@
 }
 
 .name {
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   font-weight: 600;
 }
 
 .date {
-  color: #c6d7af; /* Light Moss */
+  color: var(--color-accent);
 }
 
 .indicators {
@@ -95,14 +95,14 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background-color: #c6d7af; /* Light Moss */
+  background-color: var(--color-accent);
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-base);
 }
 
 .indicator.active {
-  background-color: #7b4b3a; /* Earth Brown */
+  background-color: var(--color-cta);
   transform: scale(1.2);
 }
 

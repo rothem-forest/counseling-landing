@@ -1,6 +1,6 @@
 .location {
   padding: 6rem 0;
-  background-color: white;
+  background-color: var(--color-white);
 }
 
 .container {
@@ -16,13 +16,13 @@
 
 .title {
   font-size: 2.5rem;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -36,9 +36,9 @@
 
 .mapContainer {
   width: 100%;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-md);
   height: 100%;
 }
 
@@ -49,18 +49,19 @@
 }
 
 .branchCard {
-  background-color: #f3eed9; /* Warm Beige */
+  background-color: var(--color-background);
   padding: 2rem;
-  border-radius: 16px;
-  transition: transform 0.3s ease;
+  border-radius: var(--radius-lg);
+  transition: var(--transition-base);
 }
 
 .branchCard:hover {
   transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
 }
 
 .branchName {
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -81,12 +82,12 @@
 }
 
 .branchInfo strong {
-  color: #7b4b3a; /* Earth Brown */
+  color: var(--color-cta);
   font-weight: 600;
 }
 
 .branchInfo p {
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   margin: 0;
   line-height: 1.5;
 }
