@@ -27,6 +27,8 @@ const Counselor = () => {
   const [, setScrollY] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -45,6 +47,8 @@ const Counselor = () => {
   }, []);
 
   const calculateMovement = (factor: number = 1) => {
+    if (typeof window === "undefined") return { x: 0, y: 0 };
+
     return {
       x: (mousePosition.x - window.innerWidth / 2) * 0.02 * factor,
       y: (mousePosition.y - window.innerHeight / 2) * 0.02 * factor,
@@ -73,7 +77,7 @@ const Counselor = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              transform: `translate(${calculateMovement(0.5).x}px, ${calculateMovement(0.5).y}px)`,
+              transform: `translate(${calculateMovement(0.5)?.x}px, ${calculateMovement(0.5)?.y}px)`,
             }}
           >
             <motion.div className={styles.imageWrapper} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
@@ -81,7 +85,7 @@ const Counselor = () => {
               <div
                 className={styles.imageOverlay}
                 style={{
-                  transform: `translate(${calculateMovement(-1).x}px, ${calculateMovement(-1).y}px)`,
+                  transform: `translate(${calculateMovement(-1)?.x}px, ${calculateMovement(-1)?.y}px)`,
                 }}
               />
             </motion.div>
@@ -121,7 +125,7 @@ const Counselor = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             style={{
-              transform: `translate(${calculateMovement(-0.5).x}px, ${calculateMovement(-0.5).y}px)`,
+              transform: `translate(${calculateMovement(-0.5)?.x}px, ${calculateMovement(-0.5)?.y}px)`,
             }}
           >
             <h4 className={styles.careerTitle}>주요 경력</h4>

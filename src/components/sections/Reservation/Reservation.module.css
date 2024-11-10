@@ -1,6 +1,6 @@
 .reservation {
   padding: 6rem 0;
-  background-color: white;
+  background-color: var(--color-background);
 }
 
 .container {
@@ -16,13 +16,13 @@
 
 .title {
   font-size: 2.5rem;
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   margin-bottom: 1rem;
 }
 
 .subtitle {
   font-size: 1.2rem;
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   max-width: 600px;
   margin: 0 auto;
 }
@@ -35,9 +35,9 @@
 }
 
 .formWrapper {
-  background-color: #f3eed9; /* Warm Beige */
+  background-color: var(--color-accent);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
 }
 
 .form {
@@ -53,24 +53,24 @@
 }
 
 .label {
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   font-weight: 500;
 }
 
 .input,
 .textarea {
   padding: 0.75rem 1rem;
-  border: 1px solid #c6d7af; /* Light Moss */
-  border-radius: 8px;
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
   font-size: 1rem;
   transition: border-color 0.3s ease;
-  background-color: white;
+  background-color: var(--color-white);
 }
 
 .input:focus,
 .textarea:focus {
   outline: none;
-  border-color: #7b4b3a; /* Earth Brown */
+  border-color: var(--color-cta);
 }
 
 .textarea {
@@ -79,16 +79,16 @@
 }
 
 .error {
-  color: #e74c3c;
+  color: var(--color-error);
   font-size: 0.875rem;
 }
 
 .submitButton {
-  background-color: #7b4b3a; /* Earth Brown */
-  color: white;
+  background-color: var(--color-cta);
+  color: var(--color-white);
   border: none;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-weight: 600;
   cursor: pointer;
   margin-top: 1rem;
@@ -100,13 +100,13 @@
 }
 
 .infoCard {
-  background-color: #f3eed9; /* Warm Beige */
+  background-color: var(--color-accent);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: var(--radius-lg);
 }
 
 .infoTitle {
-  color: #2c5f2d; /* Deep Forest Green */
+  color: var(--color-primary);
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -121,7 +121,7 @@
 }
 
 .infoList li {
-  color: #8faf84; /* Sage Green */
+  color: var(--color-text);
   padding-left: 1.5rem;
   position: relative;
 }
@@ -130,7 +130,7 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: #7b4b3a; /* Earth Brown */
+  color: var(--color-cta);
 }
 
 @media (max-width: 968px) {
