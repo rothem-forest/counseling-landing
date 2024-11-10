@@ -24,7 +24,7 @@ const specialties = [
 
 const Counselor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [_scrollY, setScrollY] = useState(0);
+  const [, setScrollY] = useState(0);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
