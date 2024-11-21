@@ -1,7 +1,7 @@
 "use client";
 
 import * as motion from "framer-motion/client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import StarRating from "@/components/common/StarRating/StarRating";
 import styles from "./Reviews.module.css";
 
@@ -86,6 +86,7 @@ const Reviews = () => {
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const itemsPerPage = 4;
   const totalPages = Math.ceil(reviews.length / itemsPerPage);
+  const constraintsRef = useRef(null);
 
   useEffect(() => {
     if (!isAutoPlay) return;
@@ -100,6 +101,23 @@ const Reviews = () => {
   const getCurrentPageItems = () => {
     const start = currentPage * itemsPerPage;
     return reviews.slice(start, start + itemsPerPage);
+  };
+
+  const handleDragEnd = (event: any, info: any) => {
+    const threshold = 50; // 드래그 임계값
+    if (info.offset.x < -threshold && currentPage < totalPages - 1) {
+      setCurrentPage(currentPage + 1);
+    } else if (info.offset.x > threshold && currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handlePrevClick = () => {
+    setCurrentPage((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
+  const handleNextClick = () => {
+    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : prev));
   };
 
   return (
@@ -120,12 +138,41 @@ const Reviews = () => {
           className={styles.carouselContainer}
           onMouseEnter={() => setIsAutoPlay(false)}
           onMouseLeave={() => setIsAutoPlay(true)}
+          ref={constraintsRef}
         >
+          <motion.button
+            className={`${styles.navButton} ${styles.prevButton}`}
+            onClick={handlePrevClick}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15 19l-7-7 7-7"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.button>
+
           <motion.div
             className={styles.reviewGrid}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
+            drag="x"
+            dragConstraints={constraintsRef}
+            onDragEnd={handleDragEnd}
           >
             {getCurrentPageItems().map((review, index) => (
               <motion.div
@@ -148,11 +195,38 @@ const Reviews = () => {
             ))}
           </motion.div>
 
+          <motion.button
+            className={`${styles.navButton} ${styles.nextButton}`}
+            onClick={handleNextClick}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+          >
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M9 5l7 7-7 7"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </motion.button>
+
           <div className={styles.indicators}>
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
-                className={`${styles.indicator} ${index === currentPage ? styles.active : ""}`}
+                className={`${styles.indicator} ${
+                  index === currentPage ? styles.active : ""
+                }`}
                 onClick={() => setCurrentPage(index)}
               />
             ))}

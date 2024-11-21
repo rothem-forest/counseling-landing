@@ -6,7 +6,7 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 4rem;
 }
 
 .header {
@@ -29,7 +29,34 @@
 
 .carouselContainer {
   position: relative;
-  margin: 0 auto;
+  width: 100%;
+  overflow: visible;
+  margin: 0 20px;
+}
+
+.navButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  border: 1px solid #eaeaea;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.prevButton {
+  left: -50px;
+}
+
+.nextButton {
+  right: -50px;
 }
 
 .reviewGrid {
@@ -37,6 +64,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-bottom: 2rem;
+  touch-action: pan-y pinch-zoom;
 }
 
 .reviewCard {
@@ -123,5 +151,18 @@
 
   .reviewCard {
     padding: 1.5rem;
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .carouselContainer {
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .navButton {
+    display: none;
   }
 }
