@@ -24,86 +24,59 @@ const specialties = [
 ];
 
 const Counselor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [, setScrollY] = useState(0);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const calculateMovement = (factor: number = 1) => {
-    if (typeof window === "undefined") return { x: 0, y: 0 };
-
-    return {
-      x: (mousePosition.x - window.innerWidth / 2) * 0.02 * factor,
-      y: (mousePosition.y - window.innerHeight / 2) * 0.02 * factor,
-    };
-  };
-
   return (
     <section className={styles.counselor} id="counselor">
       <div className={styles.container}>
         <div className={styles.content}>
-          <motion.div
-            className={styles.profileSection}
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className={styles.imageWrapper}>
+          <div className={styles.imageGrid}>
+            <motion.div
+              className={styles.imageWrapper}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
               <Image
                 src="https://modo-phinf.pstatic.net/20230130_140/1675026430046r176A_PNG/mosaIMyw4d.png?type=f530_353"
-                alt="상담사 프로필"
-                className={styles.profileImage}
+                alt="상담실 이미지 1"
+                className={styles.image}
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </div>
-          </motion.div>
+            </motion.div>
+            <motion.div
+              className={`${styles.imageWrapper} ${styles.imageSecond}`}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Image
+                src="https://modo-phinf.pstatic.net/20230126_36/1674699239372J142M_PNG/mosaXOw3lU.png?type=f353_353"
+                alt="상담실 이미지 2"
+                className={styles.image}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
+          </div>
 
           <motion.div
-            className={styles.infoSection}
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className={styles.textContent}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h2 className={styles.title}>심리상담이란?</h2>
+            <h2 className={styles.title}>전문 심리상담사 소개</h2>
             <p className={styles.description}>
-              Psychological counseling 심리적 문제로 인한 정신적 고통, 대인관계에서의 갈등, 사회생활에서의 부적응 등
-              일상생활에서 겪고 있는 다양한 문제에서 벗어나, 보다 적응적이고 만족한 삶을 누리기 위하여 상담자와 내담자가
-              협력하여 문제를 풀어나가는 과정입니다.
+              저희는 10년 이상의 경험을 가진 전문 심리상담사들로 구성되어 있습니다. 우울증, 불안장애, 트라우마 등 다양한
+              심리적 어려움을 겪고 계신 분들께 전문적이고 따뜻한 상담을 제공해 드립니다. 내담자 한 분 한 분의 이야기에
+              귀 기울이며, 함께 치유의 여정을 걸어가겠습니다.
             </p>
-
-            <div className={styles.serviceTypes}>
-              <motion.div
-                className={styles.serviceType}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                <h3>개인상담</h3>
-                <p>모델놀이치료</p>
-              </motion.div>
-            </div>
+            <motion.button className={styles.readMoreButton} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              상담사 프로필 보기
+            </motion.button>
           </motion.div>
         </div>
       </div>

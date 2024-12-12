@@ -1,48 +1,54 @@
 .counselor {
-  padding: 6rem 0;
-  background-color: var(--color-basic);
+  padding: 8rem 0;
+  background-color: var(--color-white);
   position: relative;
   overflow: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.2fr 1fr;
   gap: 4rem;
-  align-items: start;
+  align-items: center;
 }
 
-.profileSection {
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
   position: relative;
 }
 
 .imageWrapper {
+  position: relative;
   width: 100%;
-  aspect-ratio: 3/4;
+  aspect-ratio: 1;
   overflow: hidden;
-  background-color: var(--color-white);
 }
 
-.profileImage {
-  width: 100%;
-  height: 100%;
+.imageSecond {
+  margin-top: 4rem;
+}
+
+.image {
   object-fit: cover;
 }
 
-.infoSection {
-  padding: 2rem;
+.textContent {
+  align-self: flex-end;
+  padding-bottom: 4rem;
 }
 
 .title {
-  font-size: 2rem;
+  font-size: 2.5rem;
   color: var(--color-primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .description {
@@ -50,41 +56,39 @@
   color: var(--color-text);
   line-height: 1.8;
   margin-bottom: 2rem;
-  word-break: keep-all;
+  opacity: 0.8;
 }
 
-.serviceTypes {
-  margin-top: 3rem;
-}
-
-.serviceType {
-  margin-bottom: 1.5rem;
-}
-
-.serviceType h3 {
-  font-size: 1.3rem;
+.readMoreButton {
+  background-color: var(--color-basic);
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.serviceType p {
-  color: var(--color-text);
-  font-size: 1.1rem;
-}
-
-@media (max-width: 968px) {
+@media (max-width: 1024px) {
   .content {
     grid-template-columns: 1fr;
     gap: 3rem;
   }
 
-  .imageWrapper {
-    max-width: 500px;
+  .imageGrid {
+    max-width: 800px;
     margin: 0 auto;
   }
 
-  .infoSection {
-    padding: 0;
+  .textContent {
+    padding-bottom: 0;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .imageSecond {
+    margin-top: 2rem;
   }
 }
 
@@ -93,19 +97,20 @@
     padding: 4rem 0;
   }
 
+  .imageGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .imageSecond {
+    margin-top: 0;
+  }
+
   .title {
-    font-size: 1.75rem;
+    font-size: 2rem;
   }
 
   .description {
-    font-size: 1rem;
-  }
-
-  .serviceType h3 {
-    font-size: 1.2rem;
-  }
-
-  .serviceType p {
     font-size: 1rem;
   }
 }
