@@ -1,27 +1,17 @@
 "use client";
 
 import * as motion from "framer-motion/client";
-import { useState, useEffect } from "react";
 import styles from "./Counselor.module.css";
 import Image from "next/image";
 
-const careerHistory = [
-  { year: "2024", description: "로뎀숲 심리상담센터 대표" },
-  { year: "2023", description: "한국심리학회 상담심리사 1급" },
-  { year: "2022", description: "서울대학교 심리상담학과 박사" },
-  { year: "2020", description: "국제심리상담센터 수석상담사" },
-  { year: "2018", description: "한국상담학회 전문상담사 자격 취득" },
-  { year: "2017", description: "연세대학교 심리학과 석사" },
-];
-
-const specialties = [
-  "가족관계 회복",
-  "부부상담 전문",
-  "청소년 심리상담",
-  "우울증/불안장애",
-  "트라우마 치료",
-  "자존감 회복",
-];
+// const careerHistory = [
+//   { year: "2024", description: "로뎀숲 심리상담센터 대표" },
+//   { year: "2023", description: "한국심리학회 상담심리사 1급" },
+//   { year: "2022", description: "서울대학교 심리상담학과 박사" },
+//   { year: "2020", description: "국제심리상담센터 수석상담사" },
+//   { year: "2018", description: "한국상담학회 전문상담사 자격 취득" },
+//   { year: "2017", description: "연세대학교 심리학과 석사" },
+// ];
 
 const Counselor = () => {
   return (
