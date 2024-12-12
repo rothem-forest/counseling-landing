@@ -48,21 +48,25 @@
 }
 
 .imageWrapper {
+  position: relative;
   width: 100%;
   height: 280px;
-  position: relative;
   overflow: hidden;
+  background-color: var(--color-background);
+  transition: all 0.4s ease;
 }
 
 .cardImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: all 0.4s ease;
+  filter: grayscale(100%);
 }
 
 .card:hover .cardImage {
   transform: scale(1.05);
+  filter: grayscale(0%);
 }
 
 .cardContent {
