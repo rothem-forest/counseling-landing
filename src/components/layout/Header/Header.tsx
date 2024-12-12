@@ -40,12 +40,11 @@ const Header = () => {
   }, []);
 
   const navItems = [
-    { label: "홈", href: "#hero" },
     { label: "서비스", href: "#services" },
     { label: "상담사", href: "#counselor" },
+    { label: "쉼터", href: "#center" },
     { label: "블로그", href: "#blog" },
-    { label: "후기", href: "#reviews" },
-    { label: "위치", href: "#location" },
+    { label: "오시는길", href: "#location" },
     { label: "FAQ", href: "#faq" },
   ];
 
