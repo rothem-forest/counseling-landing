@@ -4,8 +4,9 @@
 
   /* Modern & Fresh Color Palette */
   --color-primary: #2c5f2d; /* Deep Forest Green - 메인 컬러 */
+  --color-primary-dark: #1a3d1b; /* Darker Forest Green - 메인 컬러의 어두운 버전 */
   --color-background: #f8f9f6; /* Pearl White - 배경 */
-  --color-text: #739e82; /* Forest Sage - 서브 텍스트 */
+  --color-text: #4d7359; /* Forest Sage - 서브 텍스트 */
   --color-accent: #e1ede3; /* Mint Frost - 연한 포인트 */
   --color-cta: #1b3d3d; /* Navy Pine - CTA 버튼 */
   --color-highlight: #ddb771; /* Sunlit Gold - 액센트 */
