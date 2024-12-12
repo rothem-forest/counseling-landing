@@ -58,17 +58,6 @@ const Counselor = () => {
   return (
     <section className={styles.counselor} id="counselor">
       <div className={styles.container}>
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className={styles.title}>전문 상담사 소개</h2>
-          <p className={styles.subtitle}>따뜻한 마음으로 여러분의 이야기에 귀 기울이겠습니다</p>
-        </motion.div>
-
         <div className={styles.content}>
           <motion.div
             className={styles.profileSection}
@@ -76,74 +65,37 @@ const Counselor = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{
-              transform: `translate(${calculateMovement(0.5)?.x}px, ${calculateMovement(0.5)?.y}px)`,
-            }}
           >
-            <motion.div className={styles.imageWrapper} whileHover={{ scale: 1.05 }} transition={{ duration: 0.3 }}>
-              <div className={styles.profileImage} />
-              <div
-                className={styles.imageOverlay}
-                style={{
-                  transform: `translate(${calculateMovement(-1)?.x}px, ${calculateMovement(-1)?.y}px)`,
-                }}
-              />
-            </motion.div>
-            <motion.div
-              className={styles.profileInfo}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <h3 className={styles.name}>김로뎀 상담사</h3>
-              <p className={styles.role}>로뎀숲 심리상담센터 대표</p>
-              <div className={styles.specialties}>
-                <h4>전문 분야</h4>
-                <ul className={styles.specialtyList}>
-                  {specialties.map((specialty, index) => (
-                    <motion.li
-                      key={index}
-                      className={styles.specialtyItem}
-                      initial={{ opacity: 0, x: -20 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                    >
-                      {specialty}
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
+            <div className={styles.imageWrapper}>
+              <img src="/images/counselor.jpg" alt="상담사 프로필" className={styles.profileImage} />
+            </div>
           </motion.div>
 
           <motion.div
-            className={styles.careerSection}
+            className={styles.infoSection}
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            style={{
-              transform: `translate(${calculateMovement(-0.5)?.x}px, ${calculateMovement(-0.5)?.y}px)`,
-            }}
           >
-            <h4 className={styles.careerTitle}>주요 경력</h4>
-            <div className={styles.timeline}>
-              {careerHistory.map((item, index) => (
-                <motion.div
-                  key={index}
-                  className={styles.timelineItem}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ x: 10 }}
-                >
-                  <span className={styles.year}>{item.year}</span>
-                  <span className={styles.description}>{item.description}</span>
-                </motion.div>
-              ))}
+            <h2 className={styles.title}>심리상담이란?</h2>
+            <p className={styles.description}>
+              Psychological counseling 심리적 문제로 인한 정신적 고통, 대인관계에서의 갈등, 사회생활에서의 부적응 등
+              일상생활에서 겪고 있는 다양한 문제에서 벗어나, 보다 적응적이고 만족한 삶을 누리기 위하여 상담자와 내담자가
+              협력하여 문제를 풀어나가는 과정입니다.
+            </p>
+
+            <div className={styles.serviceTypes}>
+              <motion.div
+                className={styles.serviceType}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+              >
+                <h3>개인상담</h3>
+                <p>모델놀이치료</p>
+              </motion.div>
             </div>
           </motion.div>
         </div>

@@ -8,6 +8,7 @@ import Blog from "@/components/sections/Blog/Blog";
 import FAQ from "@/components/sections/FAQ/FAQ";
 import Location from "@/components/sections/Location/Location";
 import Footer from "@/components/layout/Footer/Footer";
+import Center from "@/components/sections/Center/Center";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Services />
       <Counselor />
+      <Center />
       <Reviews />
       <Reservation />
       <Blog />

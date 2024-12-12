@@ -1,6 +1,6 @@
 .counselor {
   padding: 6rem 0;
-  background-color: var(--color-white);
+  background-color: var(--color-basic);
   position: relative;
   overflow: hidden;
 }
@@ -9,26 +9,6 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: var(--color-text);
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .content {
@@ -39,137 +19,72 @@
 }
 
 .profileSection {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  perspective: 1000px;
+  position: relative;
 }
 
 .imageWrapper {
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
+  aspect-ratio: 3/4;
   overflow: hidden;
-  position: relative;
-  transform-style: preserve-3d;
+  background-color: var(--color-white);
 }
 
 .profileImage {
   width: 100%;
   height: 100%;
-  background-color: var(--color-background);
-  transform: translateZ(20px);
+  object-fit: cover;
 }
 
-.imageOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, var(--color-accent), transparent);
-  pointer-events: none;
-  transform: translateZ(40px);
-}
-
-.profileInfo {
+.infoSection {
   padding: 2rem;
-  background-color: var(--color-background);
-  border-radius: var(--radius-lg);
-  transform-style: preserve-3d;
 }
 
-.name {
+.title {
   font-size: 2rem;
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  transform: translateZ(20px);
-}
-
-.role {
-  font-size: 1.1rem;
-  color: var(--color-cta);
-  margin-bottom: 2rem;
-  transform: translateZ(15px);
-}
-
-.specialties h4 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  transform: translateZ(20px);
-}
-
-.specialtyList {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  transform: translateZ(15px);
-}
-
-.specialtyItem {
-  color: var(--color-text);
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.specialtyItem::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
-}
-
-.careerSection {
-  padding: 2rem;
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  transform-style: preserve-3d;
-}
-
-.careerTitle {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  transform: translateZ(20px);
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  transform: translateZ(15px);
-}
-
-.timelineItem {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 1rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-accent);
-  transition: var(--transition-base);
-}
-
-.year {
-  color: var(--color-cta);
-  font-weight: 600;
+  margin-bottom: 1.5rem;
 }
 
 .description {
+  font-size: 1.1rem;
   color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  word-break: keep-all;
+}
+
+.serviceTypes {
+  margin-top: 3rem;
+}
+
+.serviceType {
+  margin-bottom: 1.5rem;
+}
+
+.serviceType h3 {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+}
+
+.serviceType p {
+  color: var(--color-text);
+  font-size: 1.1rem;
 }
 
 @media (max-width: 968px) {
   .content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
 
-  .specialtyList {
-    grid-template-columns: 1fr;
+  .imageWrapper {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .infoSection {
+    padding: 0;
   }
 }
 
@@ -179,10 +94,18 @@
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
 
-  .timelineItem {
-    grid-template-columns: 60px 1fr;
+  .description {
+    font-size: 1rem;
+  }
+
+  .serviceType h3 {
+    font-size: 1.2rem;
+  }
+
+  .serviceType p {
+    font-size: 1rem;
   }
 }
