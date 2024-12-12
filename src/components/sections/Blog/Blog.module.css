@@ -66,8 +66,8 @@
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  background-color: var(--color-basic);
+  color: #333;
   padding: 0.5rem 1rem;
   border-radius: var(--radius-md);
   font-size: 0.875rem;
@@ -81,7 +81,7 @@
 .cardTitle {
   font-size: 1.25rem;
   font-weight: 600;
-  color: var(--color-primary);
+  color: #333;
   margin-bottom: 0.75rem;
   line-height: 1.4;
 }

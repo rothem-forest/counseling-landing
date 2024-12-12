@@ -54,8 +54,8 @@ const Services = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className={styles.title}>맞춤형 상담 서비스</h2>
-          <p className={styles.subtitle}>당신의 상황에 맞는 전문적인 상담 서비스를 제공합니다</p>
+          <h2 className={styles.title}>로뎀숲만의 서비스</h2>
+          <p className={styles.subtitle}>당신의 마음에 가장 필요한 상담을 제공합니다.</p>
         </motion.div>
 
         <div className={styles.cardGrid}>
