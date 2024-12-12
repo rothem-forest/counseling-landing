@@ -39,7 +39,12 @@ const Hero = () => {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.background} style={{ transform: `translateY(${scrollY * 0.5}px)` }} />
+      <div className={styles.background}>
+        <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
+          <source src="/background/background.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.overlay} style={{ transform: `translateY(${scrollY * 0.5}px)` }} />
+      </div>
       <div className={styles.container}>
         <motion.div
           className={styles.content}
@@ -92,7 +97,7 @@ const Hero = () => {
           </motion.button>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className={styles.floatingElements}
           style={{
             transform: `translate(${calculateMovement(-1)?.x}px, ${calculateMovement(-1)?.y}px)`,
@@ -114,7 +119,7 @@ const Hero = () => {
               }}
             />
           ))}
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
