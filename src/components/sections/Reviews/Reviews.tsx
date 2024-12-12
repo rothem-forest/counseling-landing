@@ -4,6 +4,7 @@ import * as motion from "framer-motion/client";
 import { useState, useEffect, useRef } from "react";
 import StarRating from "@/components/common/StarRating/StarRating";
 import styles from "./Reviews.module.css";
+import { PanInfo } from "framer-motion";
 
 interface Review {
   id: number;
@@ -103,8 +104,8 @@ const Reviews = () => {
     return reviews.slice(start, start + itemsPerPage);
   };
 
-  const handleDragEnd = (event: any, info: any) => {
-    const threshold = 50; // 드래그 임계값
+  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const threshold = 50;
     if (info.offset.x < -threshold && currentPage < totalPages - 1) {
       setCurrentPage(currentPage + 1);
     } else if (info.offset.x > threshold && currentPage > 0) {
@@ -148,13 +149,7 @@ const Reviews = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M15 19l-7-7 7-7"
                 stroke="currentColor"
@@ -203,13 +198,7 @@ const Reviews = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M9 5l7 7-7 7"
                 stroke="currentColor"
@@ -224,9 +213,7 @@ const Reviews = () => {
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
-                className={`${styles.indicator} ${
-                  index === currentPage ? styles.active : ""
-                }`}
+                className={`${styles.indicator} ${index === currentPage ? styles.active : ""}`}
                 onClick={() => setCurrentPage(index)}
               />
             ))}
