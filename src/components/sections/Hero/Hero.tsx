@@ -61,7 +61,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            당신의 마음에
+            당신의 <span className={styles.highlight}>마음</span>에
             <br />
             <motion.span
               className={styles.highlight}
@@ -80,9 +80,10 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            로뎀숲 심리상담센터와 함께
+            <span className={styles.highlight}>로뎀숲 심리상담센터</span>와 함께
             <br />
-            마음의 안정과 성장을 경험하세요
+            마음의 <span className={styles.highlight}>안정</span>과 <span className={styles.highlight}>성장</span>을
+            경험하세요
           </motion.p>
 
           <motion.button
@@ -96,30 +97,6 @@ const Hero = () => {
             상담 시작하기
           </motion.button>
         </motion.div>
-
-        {/* <motion.div
-          className={styles.floatingElements}
-          style={{
-            transform: `translate(${calculateMovement(-1)?.x}px, ${calculateMovement(-1)?.y}px)`,
-          }}
-        >
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className={styles.floatingElement}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
-        </motion.div> */}
       </div>
     </section>
   );
