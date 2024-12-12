@@ -8,40 +8,49 @@ import { useState, useEffect } from "react";
 interface GalleryImage {
   src: string;
   alt: string;
+  title: string;
 }
 
 const galleryImages: GalleryImage[] = [
   {
     src: "https://modo-phinf.pstatic.net/20230126_198/1674699238131jfKiY_PNG/mosa7Bk9Cx.png?type=f353_353",
     alt: "상담실 입구",
+    title: "상담실 입구",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_36/1674699239372J142M_PNG/mosaXOw3lU.png?type=f353_353",
     alt: "상담실 내부",
+    title: "상담실 내부",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
+    title: "상담실 공간",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
+    title: "상담실 공간",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
+    title: "상담실 공간",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
+    title: "상담실 공간",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
+    title: "상담실 공간",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
+    title: "상담실 공간",
   },
 ];
 
@@ -112,6 +121,9 @@ const Center = () => {
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
+                    <div className={styles.imageOverlay}>
+                      <span className={styles.imageTitle}>{image.title}</span>
+                    </div>
                   </div>
                 </motion.div>
               ))}
