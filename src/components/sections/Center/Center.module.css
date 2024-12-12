@@ -3,7 +3,6 @@
   background-color: var(--color-white);
   position: relative;
   overflow: hidden;
-  min-height: 100vh;
 }
 
 .container {
@@ -137,7 +136,7 @@
 .galleryContainer {
   width: 100%;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .gallerySlide {
@@ -162,8 +161,8 @@
 .controlsContainer {
   display: flex;
   gap: 1rem;
-  margin-left: 2rem;
-  margin-bottom: 2rem;
+  margin-left: 0;
+  margin-bottom: 0;
 }
 
 .controlButton {
@@ -207,6 +206,6 @@
   }
 
   .controlsContainer {
-    margin-left: 1rem;
+    justify-content: end;
   }
 }

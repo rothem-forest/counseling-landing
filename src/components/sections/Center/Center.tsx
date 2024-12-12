@@ -117,29 +117,28 @@ const Center = () => {
               ))}
             </motion.div>
           </div>
-        </div>
-
-        <div className={styles.controlsContainer}>
-          <motion.button
-            className={`${styles.controlButton} ${currentIndex === 0 ? styles.disabled : ""}`}
-            onClick={handlePrev}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            disabled={currentIndex === 0}
-          >
-            ←
-          </motion.button>
-          <motion.button
-            className={`${styles.controlButton} ${
-              currentIndex === (isMobile ? galleryImages.length - 1 : galleryImages.length - 3) ? styles.disabled : ""
-            }`}
-            onClick={handleNext}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            disabled={currentIndex === (isMobile ? galleryImages.length - 1 : galleryImages.length - 3)}
-          >
-            →
-          </motion.button>
+          <div className={styles.controlsContainer}>
+            <motion.button
+              className={`${styles.controlButton} ${currentIndex === 0 ? styles.disabled : ""}`}
+              onClick={handlePrev}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              disabled={currentIndex === 0}
+            >
+              ←
+            </motion.button>
+            <motion.button
+              className={`${styles.controlButton} ${
+                currentIndex === (isMobile ? galleryImages.length - 1 : galleryImages.length - 3) ? styles.disabled : ""
+              }`}
+              onClick={handleNext}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              disabled={currentIndex === (isMobile ? galleryImages.length - 1 : galleryImages.length - 3)}
+            >
+              →
+            </motion.button>
+          </div>
         </div>
       </div>
     </section>
