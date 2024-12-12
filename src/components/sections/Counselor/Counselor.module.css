@@ -1,175 +1,105 @@
 .counselor {
-  padding: 6rem 0;
-  background-color: var(--color-white);
+  padding: 8rem 0;
+  background-color: var(--color-basic-medium);
   position: relative;
   overflow: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
-  position: relative;
-  z-index: 1;
-}
-
-.header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.title {
-  font-size: 2.5rem;
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-}
-
-.subtitle {
-  font-size: 1.2rem;
-  color: var(--color-text);
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  gap: 6rem;
+  align-items: center;
 }
 
-.profileSection {
+.imageGrid {
+  position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  perspective: 1000px;
 }
 
 .imageWrapper {
+  position: relative;
   width: 100%;
-  aspect-ratio: 1;
-  border-radius: var(--radius-lg);
+  height: 400px;
   overflow: hidden;
-  position: relative;
-  transform-style: preserve-3d;
 }
 
-.profileImage {
+.imageWrapper:first-child {
   width: 100%;
-  height: 100%;
-  background-color: var(--color-background);
-  transform: translateZ(20px);
 }
 
-.imageOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, var(--color-accent), transparent);
-  pointer-events: none;
-  transform: translateZ(40px);
+.imageSecond {
+  width: 70%;
+  align-self: flex-end;
 }
 
-.profileInfo {
-  padding: 2rem;
-  background-color: var(--color-background);
-  border-radius: var(--radius-lg);
-  transform-style: preserve-3d;
+.image {
+  object-fit: cover;
 }
 
-.name {
-  font-size: 2rem;
+.textContent {
+  align-self: flex-start;
+  padding-top: 4rem;
+}
+
+.title {
+  font-size: 2.5rem;
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
-  transform: translateZ(20px);
-}
-
-.role {
-  font-size: 1.1rem;
-  color: var(--color-cta);
   margin-bottom: 2rem;
-  transform: translateZ(15px);
-}
-
-.specialties h4 {
-  color: var(--color-primary);
-  margin-bottom: 1rem;
-  font-size: 1.2rem;
-  transform: translateZ(20px);
-}
-
-.specialtyList {
-  list-style: none;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  transform: translateZ(15px);
-}
-
-.specialtyItem {
-  color: var(--color-text);
-  padding-left: 1.5rem;
-  position: relative;
-}
-
-.specialtyItem::before {
-  content: "•";
-  position: absolute;
-  left: 0;
-  color: var(--color-accent);
-}
-
-.careerSection {
-  padding: 2rem;
-  background-color: var(--color-white);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-lg);
-  transform-style: preserve-3d;
-}
-
-.careerTitle {
-  color: var(--color-primary);
-  font-size: 1.5rem;
-  margin-bottom: 2rem;
-  transform: translateZ(20px);
-}
-
-.timeline {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  transform: translateZ(15px);
-}
-
-.timelineItem {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 1rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--color-accent);
-  transition: var(--transition-base);
-}
-
-.year {
-  color: var(--color-cta);
-  font-weight: 600;
 }
 
 .description {
+  font-size: 1.1rem;
   color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  opacity: 0.8;
 }
 
-@media (max-width: 968px) {
+.readMoreButton {
+  background-color: var(--color-basic);
+  color: var(--color-primary);
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 1024px) {
   .content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 3rem;
   }
 
-  .specialtyList {
-    grid-template-columns: 1fr;
+  .imageGrid {
+    height: 500px;
+    max-width: 800px;
+    margin: 2rem auto;
+  }
+
+  .imageWrapper {
+    height: 350px;
+  }
+
+  .textContent {
+    padding-bottom: 0;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .imageSecond {
+    margin-top: 0;
   }
 }
 
@@ -178,11 +108,56 @@
     padding: 4rem 0;
   }
 
+  .imageGrid {
+    height: 600px;
+    position: relative;
+  }
+
+  .imageWrapper {
+    position: absolute;
+    width: 60%;
+    height: 300px;
+  }
+
+  .imageWrapper:first-child {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 60%;
+  }
+
+  .imageSecond {
+    bottom: 0;
+    right: 0;
+    width: 60%;
+  }
+
+  .textContent {
+    padding-top: 0;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
   .title {
     font-size: 2rem;
   }
 
-  .timelineItem {
-    grid-template-columns: 60px 1fr;
+  .description {
+    font-size: 1rem;
+  }
+
+  .textContent {
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .imageGrid {
+    height: 400px;
+  }
+
+  .imageWrapper {
+    height: 250px;
   }
 }

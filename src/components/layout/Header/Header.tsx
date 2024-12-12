@@ -8,25 +8,43 @@ import Link from "next/link";
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [, setLastScrollY] = useState(0);
 
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };
 
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 100) {
+        // 스크롤이 100px 이상일 때
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
     checkMobile();
     window.addEventListener("resize", checkMobile);
+    window.addEventListener("scroll", handleScroll);
 
-    return () => window.removeEventListener("resize", checkMobile);
+    return () => {
+      window.removeEventListener("resize", checkMobile);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   const navItems = [
-    { label: "홈", href: "#hero" },
     { label: "서비스", href: "#services" },
     { label: "상담사", href: "#counselor" },
+    { label: "쉼터", href: "#center" },
     { label: "블로그", href: "#blog" },
-    { label: "후기", href: "#reviews" },
-    { label: "위치", href: "#location" },
+    { label: "오시는길", href: "#location" },
     { label: "FAQ", href: "#faq" },
   ];
 
@@ -62,8 +80,14 @@ const Header = () => {
     <motion.header
       className={styles.header}
       initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
+      animate={{
+        y: isVisible ? 0 : -100,
+        opacity: isVisible ? 1 : 0,
+      }}
+      transition={{
+        duration: 0.3,
+        ease: "easeInOut",
+      }}
     >
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
@@ -104,21 +128,9 @@ const Header = () => {
               animate={isOpen ? "open" : "closed"}
               whileTap={{ scale: 0.9 }}
             >
-              <span
-                className={`${styles.hamburgerLine} ${
-                  isOpen ? styles.open : ""
-                }`}
-              ></span>
-              <span
-                className={`${styles.hamburgerLine} ${
-                  isOpen ? styles.open : ""
-                }`}
-              ></span>
-              <span
-                className={`${styles.hamburgerLine} ${
-                  isOpen ? styles.open : ""
-                }`}
-              ></span>
+              <span className={`${styles.hamburgerLine} ${isOpen ? styles.open : ""}`}></span>
+              <span className={`${styles.hamburgerLine} ${isOpen ? styles.open : ""}`}></span>
+              <span className={`${styles.hamburgerLine} ${isOpen ? styles.open : ""}`}></span>
             </motion.button>
 
             <motion.div

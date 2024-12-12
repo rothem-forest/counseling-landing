@@ -39,12 +39,17 @@ const Hero = () => {
 
   return (
     <section className={styles.hero}>
-      <div className={styles.background} style={{ transform: `translateY(${scrollY * 0.5}px)` }} />
+      <div className={styles.background}>
+        <video autoPlay muted loop playsInline className={styles.backgroundVideo}>
+          <source src="/background/background.mp4" type="video/mp4" />
+        </video>
+        <div className={styles.overlay} style={{ transform: `translateY(${scrollY * 0.5}px)` }} />
+      </div>
       <div className={styles.container}>
         <motion.div
           className={styles.content}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           style={{
             transform: `translate(${calculateMovement(0.5)?.x}px, ${calculateMovement(0.5)?.y}px)`,
@@ -75,7 +80,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            로뎀숲 심리상담센터와 함께
+            로뎀숲과 함께
             <br />
             마음의 안정과 성장을 경험하세요
           </motion.p>
@@ -88,32 +93,8 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            상담 시작하기
+            상담 예약하기
           </motion.button>
-        </motion.div>
-
-        <motion.div
-          className={styles.floatingElements}
-          style={{
-            transform: `translate(${calculateMovement(-1)?.x}px, ${calculateMovement(-1)?.y}px)`,
-          }}
-        >
-          {[...Array(5)].map((_, i) => (
-            <motion.div
-              key={i}
-              className={styles.floatingElement}
-              animate={{
-                y: [0, -20, 0],
-                rotate: [0, 360],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                delay: i * 0.2,
-                ease: "easeInOut",
-              }}
-            />
-          ))}
         </motion.div>
       </div>
     </section>
