@@ -3,6 +3,7 @@
 import * as motion from "framer-motion/client";
 import { useState, useEffect } from "react";
 import styles from "./Counselor.module.css";
+import Image from "next/image";
 
 const careerHistory = [
   { year: "2024", description: "로뎀숲 심리상담센터 대표" },
@@ -67,7 +68,13 @@ const Counselor = () => {
             transition={{ duration: 0.6 }}
           >
             <div className={styles.imageWrapper}>
-              <img src="/images/counselor.jpg" alt="상담사 프로필" className={styles.profileImage} />
+              <Image
+                src="https://modo-phinf.pstatic.net/20230130_140/1675026430046r176A_PNG/mosaIMyw4d.png?type=f530_353"
+                alt="상담사 프로필"
+                className={styles.profileImage}
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
             </div>
           </motion.div>
 

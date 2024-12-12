@@ -2,6 +2,7 @@
 
 import * as motion from "framer-motion/client";
 import styles from "./Center.module.css";
+import Image from "next/image";
 
 interface GalleryImage {
   src: string;
@@ -49,7 +50,13 @@ const Center = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ scale: 1.02 }}
             >
-              <img src={image.src} alt={image.alt} className={styles.galleryImage} />
+              <Image
+                src={image.src}
+                alt={image.alt}
+                className={styles.galleryImage}
+                fill
+                sizes="(max-width: 768px) 100vw, 33vw"
+              />
             </motion.div>
           ))}
         </div>
