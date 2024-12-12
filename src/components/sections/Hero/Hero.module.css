@@ -46,8 +46,8 @@
   height: calc(100vh - 80px);
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .content {
@@ -57,7 +57,7 @@
   color: var(--color-white);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .title {
@@ -161,5 +161,13 @@
   .ctaButton {
     padding: 1rem 2.5rem;
     font-size: 1.125rem;
+  }
+
+  .container {
+    padding: 4rem 1.5rem;
+  }
+
+  .content {
+    max-width: 100%;
   }
 }

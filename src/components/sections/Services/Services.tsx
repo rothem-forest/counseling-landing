@@ -1,7 +1,6 @@
 "use client";
 
 import * as motion from "framer-motion/client";
-import { useState, useEffect } from "react";
 import styles from "./Services.module.css";
 import Image from "next/image";
 
@@ -45,30 +44,6 @@ const serviceCards: ServiceCard[] = [
 ];
 
 const Services = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const calculateCardMovement = (index: number) => {
-    if (activeCard !== index) return {};
-    const moveX = (mousePosition.x - window.innerWidth / 2) * 0.02;
-    const moveY = (mousePosition.y - window.innerHeight / 2) * 0.02;
-    return {
-      x: moveX,
-      y: moveY,
-      rotateX: moveY * 0.5,
-      rotateY: -moveX * 0.5,
-    };
-  };
-
   return (
     <section className={styles.services} id="services">
       <div className={styles.container}>

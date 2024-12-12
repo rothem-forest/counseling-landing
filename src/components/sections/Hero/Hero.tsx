@@ -48,8 +48,8 @@ const Hero = () => {
       <div className={styles.container}>
         <motion.div
           className={styles.content}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           style={{
             transform: `translate(${calculateMovement(0.5)?.x}px, ${calculateMovement(0.5)?.y}px)`,
@@ -61,7 +61,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            당신의 <span className={styles.highlight}>마음</span>에
+            당신의 마음에
             <br />
             <motion.span
               className={styles.highlight}
@@ -80,10 +80,9 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <span className={styles.highlight}>로뎀숲 심리상담센터</span>와 함께
+            로뎀숲과 함께
             <br />
-            마음의 <span className={styles.highlight}>안정</span>과 <span className={styles.highlight}>성장</span>을
-            경험하세요
+            마음의 안정과 성장을 경험하세요
           </motion.p>
 
           <motion.button
@@ -94,7 +93,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
           >
-            상담 시작하기
+            상담 예약하기
           </motion.button>
         </motion.div>
       </div>
