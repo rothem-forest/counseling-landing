@@ -61,7 +61,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            당신의 마음에
+            마음이 쉬어가는 곳,
             <br />
             <motion.span
               className={styles.highlight}
@@ -69,9 +69,8 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              평안과 쉼
+              로뎀숲
             </motion.span>
-            을 선물하세요
           </motion.h1>
 
           <motion.p
