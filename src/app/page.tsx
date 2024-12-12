@@ -2,7 +2,7 @@ import Header from "@/components/layout/Header/Header";
 import Hero from "@/components/sections/Hero/Hero";
 import Services from "@/components/sections/Services/Services";
 import Counselor from "@/components/sections/Counselor/Counselor";
-import Reviews from "@/components/sections/Reviews/Reviews";
+// import Reviews from "@/components/sections/Reviews/Reviews";
 // import Reservation from "@/components/sections/Reservation/Reservation";
 import Blog from "@/components/sections/Blog/Blog";
 import FAQ from "@/components/sections/FAQ/FAQ";
@@ -18,10 +18,10 @@ export default function Home() {
       <Services />
       <Counselor />
       <Center />
-      <Reviews />
       <Blog />
-      <FAQ />
       <Location />
+
+      <FAQ />
       <Footer />
     </main>
   );

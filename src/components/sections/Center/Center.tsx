@@ -78,7 +78,7 @@ const Center = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className={styles.title}>상담실 안내</h2>
+          <h2 className={styles.title}>쉼터 소개</h2>
           <p className={styles.subtitle}>편안한 분위기에서 마음의 휴식을 찾으세요</p>
         </motion.div>
 
