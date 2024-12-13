@@ -26,6 +26,20 @@ export default function SelfDiagnosisPage() {
   };
 
   const calculateResult = () => {
+    // 현재 활성화된 탭에 따라 필요한 답변 수 결정
+    let requiredAnswers = 21; // 기본값 (불안증)
+    if (activeTab === "depression") requiredAnswers = 5;
+    if (activeTab === "adhd") requiredAnswers = 5;
+    if (activeTab === "social") requiredAnswers = 5;
+
+    // 답변되지 않은 문항이 있는지 확인
+    const unansweredQuestions = answers.slice(0, requiredAnswers).filter((answer) => answer === -1);
+
+    if (unansweredQuestions.length > 0) {
+      alert("모든 문항에 답변해주세요.");
+      return;
+    }
+
     const sum = answers.reduce((acc, curr) => acc + (curr === -1 ? 0 : curr), 0); // -1인 경우 0으로 처리
     setTotalScore(sum);
     setShowResult(true);
