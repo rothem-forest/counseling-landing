@@ -14,6 +14,8 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
     };

@@ -58,18 +58,6 @@ const Services = () => {
             <h2 className={styles.title}>로뎀숲만의 서비스</h2>
             <p className={styles.subtitle}>당신의 마음에 가장 필요한 상담을 제공합니다.</p>
           </motion.div>
-
-          <motion.button
-            className={styles.moreButton}
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            더보기
-          </motion.button>
         </div>
 
         <div className={styles.cardGrid}>

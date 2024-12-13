@@ -11,6 +11,8 @@ const Hero = () => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -29,6 +31,7 @@ const Hero = () => {
   }, []);
 
   const calculateMovement = (factor: number = 1) => {
+    if (typeof window === "undefined") return { x: 0, y: 0 };
     return {
       x: (mousePosition.x - window.innerWidth / 2) * 0.02 * factor,
       y: (mousePosition.y - window.innerHeight / 2) * 0.02 * factor,
