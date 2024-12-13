@@ -1,7 +1,7 @@
 /* SelfDiagnosis.module.css */
 .diagnosis {
   padding: 6rem 0;
-  background-color: var(--color-background);
+  background: linear-gradient(to bottom, var(--color-background), var(--color-accent));
   position: relative;
   overflow: hidden;
 }
@@ -14,18 +14,20 @@
   align-items: center;
   justify-content: space-between;
   gap: 4rem;
-  flex-direction: row-reverse; /* 순서 변경을 위해 추가 */
+  flex-direction: row-reverse;
 }
 
 .content {
   flex: 1;
   max-width: 600px;
-  text-align: right; /* 텍스트 오른쪽 정렬 추가 */
+  text-align: right;
 }
 
 .title {
   font-size: 3rem;
-  color: var(--color-primary);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   margin-bottom: 1.5rem;
   font-weight: 700;
 }
@@ -40,24 +42,33 @@
 .startButton {
   padding: 1rem 2rem;
   font-size: 1.1rem;
-  background-color: var(--color-primary);
-  color: white;
+  background: var(--gradient-primary);
+  color: var(--color-white);
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   cursor: pointer;
   font-weight: 600;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition-smooth);
+}
+
+.startButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: var(--gradient-accent);
+  color: var(--color-primary);
 }
 
 .imageWrapper {
   flex: 1;
   max-width: 500px;
+  border-radius: var(--radius-lg);
 }
 
 .image {
   width: 100%;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
 }
 
 @media (max-width: 968px) {
@@ -69,7 +80,7 @@
 
   .content {
     max-width: 100%;
-    text-align: center; /* 모바일에서 가운데 정렬로 변경 */
+    text-align: center;
   }
 
   .imageWrapper {

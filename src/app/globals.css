@@ -34,7 +34,11 @@
 
   /* 그라데이션 */
   --gradient-primary: linear-gradient(90deg, #2c5f2d, #4d7359); /* 그라데이션 효과 */
-  --gradient-accent: linear-gradient(45deg, #ddb771, #e1ede3); /* 포인트용 그라데이션 */
+  --gradient-accent: linear-gradient(
+    45deg,
+    #2c5f2d,
+    #97c67d
+  ); /* 포인트용 그라데이션 - 초록색 계열의 조화로운 그라데이션 */
 
   /* 중립 색상 */
   --neutral-light: #f7f7f7; /* Soft Grey */
