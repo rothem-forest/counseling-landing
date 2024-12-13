@@ -40,23 +40,75 @@ export default function SelfDiagnosisPage() {
       return;
     }
 
-    const sum = answers.reduce((acc, curr) => acc + (curr === -1 ? 0 : curr), 0); // -1인 경우 0으로 처리
-    setTotalScore(sum);
+    // 각 탭별로 점수 계산 방식을 다르게 적용
+    let sum = 0;
+    const relevantAnswers = answers.slice(0, requiredAnswers);
+
+    if (activeTab === "anxiety") {
+      sum = relevantAnswers.reduce((acc, curr) => acc + (curr === -1 ? 0 : curr), 0);
+    } else {
+      // 5문항 테스트의 경우 점수를 그대로 사용 (0-15점 범위)
+      sum = relevantAnswers.reduce((acc, curr) => acc + (curr === -1 ? 0 : curr), 0);
+    }
+
+    setTotalScore(Math.round(sum)); // 소수점 반올림
     setShowResult(true);
     setShowModal(true);
   };
 
   const getResultIcon = (score: number) => {
-    if (score <= 21) return <FaRegSmile size={48} color="#27ae60" />;
-    if (score <= 42) return <FaRegMeh size={48} color="#f1c40f" />;
-    if (score <= 63) return <FaRegFrown size={48} color="#e67e22" />;
+    // 각 테스트별 문항 수에 따른 최대 점수 계산
+    const getMaxScore = () => {
+      switch (activeTab) {
+        case "anxiety":
+          return anxietyQuestions.length * 3;
+        case "depression":
+          return depressionQuestions.length * 3;
+        case "adhd":
+          return adhdQuestions.length * 3;
+        case "social":
+          return socialQuestions.length * 3;
+        default:
+          return 0;
+      }
+    };
+
+    const maxScore = getMaxScore();
+    const normalThreshold = maxScore * 0.25; // 25%
+    const mildThreshold = maxScore * 0.5; // 50%
+    const moderateThreshold = maxScore * 0.75; // 75%
+
+    if (score <= normalThreshold) return <FaRegSmile size={48} color="#27ae60" />;
+    if (score <= mildThreshold) return <FaRegMeh size={48} color="#f1c40f" />;
+    if (score <= moderateThreshold) return <FaRegFrown size={48} color="#e67e22" />;
     return <FaRegDizzy size={48} color="#e74c3c" />;
   };
 
   const getResultMessage = (score: number) => {
-    if (score <= 21) return "정상 범위입니다.";
-    if (score <= 42) return "경미한 수준입니다. 전문가와 상담을 고려해보세요.";
-    if (score <= 63) return "중등도 수준입니다. 전문가의 상담이 필요합니다.";
+    // 각 테스트별 문항 수에 따른 최대 점수 계산
+    const getMaxScore = () => {
+      switch (activeTab) {
+        case "anxiety":
+          return anxietyQuestions.length * 3;
+        case "depression":
+          return depressionQuestions.length * 3;
+        case "adhd":
+          return adhdQuestions.length * 3;
+        case "social":
+          return socialQuestions.length * 3;
+        default:
+          return 0;
+      }
+    };
+
+    const maxScore = getMaxScore();
+    const normalThreshold = maxScore * 0.25; // 25%
+    const mildThreshold = maxScore * 0.5; // 50%
+    const moderateThreshold = maxScore * 0.75; // 75%
+
+    if (score <= normalThreshold) return "정상 범위입니다.";
+    if (score <= mildThreshold) return "경미한 수준입니다. 전문가와 상담을 고려해보세요.";
+    if (score <= moderateThreshold) return "중등도 수준입니다. 전문가의 상담이 필요합니다.";
     return "심각한 수준입니다. 즉시 전문가의 도움을 받으시기 바랍니다.";
   };
 
