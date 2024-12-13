@@ -166,7 +166,8 @@ a:hover {
 
 /* iOS 입력 요소 스타일 초기화 */
 input,
-textarea {
+textarea,
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -176,13 +177,24 @@ textarea {
   color-scheme: light;
 }
 
+/* select box 화살표 커스텀 */
+select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23333' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  padding-right: 2rem;
+}
+
 /* iOS 자동완성 배경색 제거 */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 textarea:-webkit-autofill,
 textarea:-webkit-autofill:hover,
-textarea:-webkit-autofill:focus {
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
   -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
   box-shadow: 0 0 0px 1000px #ffffff inset !important;
   -webkit-text-fill-color: inherit !important;
@@ -192,9 +204,14 @@ textarea:-webkit-autofill:focus {
 /* 다크모드 대응 */
 @media (prefers-color-scheme: dark) {
   input,
-  textarea {
+  textarea,
+  select {
     background-color: #ffffff;
     color: #000000;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23333' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3'/%3E%3C/svg%3E");
   }
 
   input:-webkit-autofill,
@@ -202,7 +219,10 @@ textarea:-webkit-autofill:focus {
   input:-webkit-autofill:focus,
   textarea:-webkit-autofill,
   textarea:-webkit-autofill:hover,
-  textarea:-webkit-autofill:focus {
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
     box-shadow: 0 0 0px 1000px #ffffff inset !important;
   }
