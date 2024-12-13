@@ -240,6 +240,7 @@
 
   .main {
     padding: 2rem 0;
+    padding-top: 6rem;
   }
 
   .title {
@@ -260,7 +261,6 @@
   .stepsContainer {
     margin-bottom: 1.5rem;
     overflow-x: hidden;
-    padding-top: 2.5rem;
   }
 
   .stepsTitle {
