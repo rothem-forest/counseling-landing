@@ -65,6 +65,7 @@
   border: 2px solid white;
   transition: all 0.3s ease;
   cursor: pointer;
+  font-family: "Pretendard", sans-serif;
 }
 
 .header.scrolled .ctaButton,
@@ -131,6 +132,7 @@
 .hamburgerLine.open:nth-child(1) {
   top: 50%;
   transform: translateX(-50%) rotate(45deg);
+  background: #333;
 }
 
 .hamburgerLine.open:nth-child(2) {
@@ -140,6 +142,7 @@
 .hamburgerLine.open:nth-child(3) {
   top: 50%;
   transform: translateX(-50%) rotate(-45deg);
+  background: #333;
 }
 
 .mobileMenu {
@@ -177,11 +180,14 @@
   text-align: center;
   padding: 1.2rem;
   font-size: 1.1rem;
+  background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 100%);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 15px rgba(45, 106, 79, 0.2);
 }
 
 @media (max-width: 768px) {
-  .nav,
-  .ctaButton {
+  .nav {
     display: none;
   }
 
@@ -195,5 +201,10 @@
 
   .container {
     padding: 1rem;
+  }
+
+  .header.scrolled {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 }

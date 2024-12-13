@@ -112,6 +112,14 @@
 }
 
 @media (max-width: 768px) {
+  .container {
+    padding: 0;
+    background-color: var(--color-background);
+  }
+  .content {
+    box-shadow: none;
+    background-color: var(--color-background);
+  }
   .main {
     padding: 4rem 0;
   }

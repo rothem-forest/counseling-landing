@@ -37,7 +37,7 @@ const serviceCards: ServiceCard[] = [
     image: "/images/아동상담.jpg",
   },
   {
-    title: "가족상담",
+    title: "프로그램상담",
     description: "가족 구성원 간의 이해를 높이고 화목한 가정을 만듭니다",
     image: "/images/가족상담.jpg",
   },
@@ -47,16 +47,30 @@ const Services = () => {
   return (
     <section className={styles.services} id="services">
       <div className={styles.container}>
-        <motion.div
-          className={styles.header}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className={styles.title}>로뎀숲만의 서비스</h2>
-          <p className={styles.subtitle}>당신의 마음에 가장 필요한 상담을 제공합니다.</p>
-        </motion.div>
+        <div className={styles.headerWrapper}>
+          <motion.div
+            className={styles.header}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className={styles.title}>로뎀숲만의 서비스</h2>
+            <p className={styles.subtitle}>당신의 마음에 가장 필요한 상담을 제공합니다.</p>
+          </motion.div>
+
+          <motion.button
+            className={styles.moreButton}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            더보기
+          </motion.button>
+        </div>
 
         <div className={styles.cardGrid}>
           {serviceCards.map((card, index) => (
