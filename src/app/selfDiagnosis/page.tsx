@@ -7,7 +7,7 @@ import { FaRegSmile, FaRegMeh, FaRegFrown, FaRegDizzy } from "react-icons/fa";
 
 export default function SelfDiagnosisPage() {
   const [activeTab, setActiveTab] = useState("anxiety");
-  const [answers, setAnswers] = useState<number[]>(new Array(21).fill(0));
+  const [answers, setAnswers] = useState<number[]>(new Array(21).fill(-1)); // -1로 초기화하여 아무것도 선택되지 않은 상태로 시작
   const [, setShowResult] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
   const [showModal, setShowModal] = useState(false);
@@ -26,7 +26,7 @@ export default function SelfDiagnosisPage() {
   };
 
   const calculateResult = () => {
-    const sum = answers.reduce((acc, curr) => acc + curr, 0);
+    const sum = answers.reduce((acc, curr) => acc + (curr === -1 ? 0 : curr), 0); // -1인 경우 0으로 처리
     setTotalScore(sum);
     setShowResult(true);
     setShowModal(true);
@@ -270,7 +270,7 @@ export default function SelfDiagnosisPage() {
                 className={`${styles.tab} ${activeTab === tab.id ? styles.activeTab : ""}`}
                 onClick={() => {
                   setActiveTab(tab.id);
-                  setAnswers(new Array(21).fill(0));
+                  setAnswers(new Array(21).fill(-1)); // 탭 변경 시에도 -1로 초기화
                   setShowResult(false);
                   setShowModal(false);
                 }}
