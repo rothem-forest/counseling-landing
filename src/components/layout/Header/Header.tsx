@@ -41,12 +41,13 @@ const Header = () => {
   }, [pathname]);
 
   const navItems = [
-    { label: "서비스", href: "#services" },
-    { label: "상담사", href: "#counselor" },
-    { label: "쉼터", href: "#center" },
-    { label: "블로그", href: "#blog" },
-    { label: "오시는길", href: "#location" },
-    { label: "FAQ", href: "#faq" },
+    { label: "서비스", href: "/#services" },
+    { label: "상담사", href: "/#counselor" },
+    { label: "무료진단", href: "/selfDiagnosis" },
+    { label: "쉼터", href: "/#center" },
+    { label: "블로그", href: "/#blog" },
+    { label: "오시는길", href: "/#location" },
+    { label: "FAQ", href: "/#faq " },
   ];
 
   const menuVariants = {
@@ -93,26 +94,26 @@ const Header = () => {
           <>
             <nav className={styles.nav}>
               {navItems.map((item) => (
-                <motion.a
-                  key={item.href}
-                  href={item.href}
-                  className={styles.navItem}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {item.label}
-                </motion.a>
+                <motion.div key={item.href}>
+                  <Link href={item.href} className={styles.navItem}>
+                    <motion.span whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                      {item.label}
+                    </motion.span>
+                  </Link>
+                </motion.div>
               ))}
             </nav>
 
-            <motion.button
-              onClick={() => router.push("/reservation")}
-              className={styles.ctaButton}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              상담 예약하기
-            </motion.button>
+            <div className={styles.buttonGroup}>
+              <motion.button
+                onClick={() => router.push("/reservation")}
+                className={styles.ctaButton}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                상담 예약하기
+              </motion.button>
+            </div>
           </>
         ) : (
           <>
@@ -136,30 +137,40 @@ const Header = () => {
             >
               <nav className={styles.mobileNav}>
                 {navItems.map((item) => (
-                  <motion.a
-                    key={item.href}
-                    href={item.href}
-                    className={styles.mobileNavItem}
-                    onClick={() => setIsOpen(false)}
-                    whileHover={{ x: 10 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    {item.label}
-                  </motion.a>
+                  <motion.div key={item.href}>
+                    <Link href={item.href} className={styles.mobileNavItem} onClick={() => setIsOpen(false)}>
+                      <motion.span whileHover={{ x: 10 }} whileTap={{ scale: 0.95 }}>
+                        {item.label}
+                      </motion.span>
+                    </Link>
+                  </motion.div>
                 ))}
               </nav>
 
-              <motion.button
-                onClick={() => {
-                  setIsOpen(false);
-                  router.push("/reservation");
-                }}
-                className={styles.mobileCta}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                상담 예약하기
-              </motion.button>
+              <div className={styles.mobileButtonGroup}>
+                <motion.button
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push("/selfDiagnosis");
+                  }}
+                  className={styles.mobileDiagnosis}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  무료진단
+                </motion.button>
+                <motion.button
+                  onClick={() => {
+                    setIsOpen(false);
+                    router.push("/reservation");
+                  }}
+                  className={styles.mobileCta}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  상담 예약하기
+                </motion.button>
+              </div>
             </motion.div>
           </>
         )}
