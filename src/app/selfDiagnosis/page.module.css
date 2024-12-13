@@ -233,6 +233,9 @@
 
 /* 반응형 디자인 */
 @media (max-width: 768px) {
+  .main {
+    padding-top: 6rem;
+  }
   .title {
     font-size: 2rem;
   }
