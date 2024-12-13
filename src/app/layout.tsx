@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Header from "@/components/layout/Header/Header";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -41,7 +43,11 @@ export default function RootLayout({
         <meta name="naver-site-verification" content="네이버 사이트 인증 코드" />
         <link rel="canonical" href="https://로뎀숲상담센터도메인.com" />
       </head>
-      <body style={{ fontFamily: "Pretendard, sans-serif" }}>{children}</body>
+      <body style={{ fontFamily: "Pretendard, sans-serif" }}>
+        <Header />
+
+        {children}
+      </body>
     </html>
   );
 }

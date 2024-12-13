@@ -36,6 +36,9 @@
  | | | |-Blog
  | | | | |-Blog.module.css
  | | | | |-Blog.tsx
+| | | |-Center
+ | | | | |-Center.module.css
+ | | | | |-Center.tsx
  | | | |-Counselor
  | | | | |-Counselor.module.css
  | | | | |-Counselor.tsx

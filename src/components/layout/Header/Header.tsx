@@ -4,12 +4,14 @@ import { useState, useEffect } from "react";
 import * as motion from "framer-motion/client";
 import styles from "./Header.module.css";
 import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 
 const Header = () => {
+  const router = useRouter();
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-  const [, setLastScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -17,19 +19,16 @@ const Header = () => {
     };
 
     const handleScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      if (currentScrollY > 100) {
-        // 스크롤이 100px 이상일 때
-        setIsVisible(true);
-      } else {
-        setIsVisible(false);
+      // reservation 페이지에서는 스크롤 효과 적용하지 않음
+      if (pathname === "/reservation") {
+        setIsScrolled(true);
+        return;
       }
-
-      setLastScrollY(currentScrollY);
+      setIsScrolled(window.scrollY > 0);
     };
 
     checkMobile();
+    handleScroll(); // 초기 로드 시 상태 설정
     window.addEventListener("resize", checkMobile);
     window.addEventListener("scroll", handleScroll);
 
@@ -37,7 +36,7 @@ const Header = () => {
       window.removeEventListener("resize", checkMobile);
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [pathname]);
 
   const navItems = [
     { label: "서비스", href: "#services" },
@@ -78,16 +77,10 @@ const Header = () => {
 
   return (
     <motion.header
-      className={styles.header}
-      initial={{ y: -100 }}
-      animate={{
-        y: isVisible ? 0 : -100,
-        opacity: isVisible ? 1 : 0,
-      }}
-      transition={{
-        duration: 0.3,
-        ease: "easeInOut",
-      }}
+      className={`${styles.header} ${isScrolled || pathname === "/reservation" ? styles.scrolled : ""}`}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
     >
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
@@ -110,14 +103,14 @@ const Header = () => {
               ))}
             </nav>
 
-            <motion.a
-              href="#reservation"
+            <motion.button
+              onClick={() => router.push("/reservation")}
               className={styles.ctaButton}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               상담 예약하기
-            </motion.a>
+            </motion.button>
           </>
         ) : (
           <>
@@ -154,15 +147,17 @@ const Header = () => {
                 ))}
               </nav>
 
-              <motion.a
-                href="#reservation"
+              <motion.button
+                onClick={() => {
+                  setIsOpen(false);
+                  router.push("/reservation");
+                }}
                 className={styles.mobileCta}
-                onClick={() => setIsOpen(false)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
                 상담 예약하기
-              </motion.a>
+              </motion.button>
             </motion.div>
           </>
         )}
