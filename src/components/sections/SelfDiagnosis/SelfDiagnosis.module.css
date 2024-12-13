@@ -73,8 +73,15 @@
 @media (max-width: 968px) {
   .container {
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
     text-align: center;
+  }
+  .title {
+    margin-bottom: 0.5rem;
+  }
+
+  .description {
+    margin-bottom: 1rem;
   }
 
   .content {

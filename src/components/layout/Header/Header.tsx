@@ -151,17 +151,6 @@ const Header = () => {
                 <motion.button
                   onClick={() => {
                     setIsOpen(false);
-                    router.push("/selfDiagnosis");
-                  }}
-                  className={styles.mobileDiagnosis}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  무료진단
-                </motion.button>
-                <motion.button
-                  onClick={() => {
-                    setIsOpen(false);
                     router.push("/reservation");
                   }}
                   className={styles.mobileCta}
