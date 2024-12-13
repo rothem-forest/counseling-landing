@@ -30,27 +30,12 @@ const galleryImages: GalleryImage[] = [
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
-    title: "상담실 공간",
+    title: "상담실 공간2",
   },
   {
     src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
     alt: "상담실 공간",
-    title: "상담실 공간",
-  },
-  {
-    src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
-    alt: "상담실 공간",
-    title: "상담실 공간",
-  },
-  {
-    src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
-    alt: "상담실 공간",
-    title: "상담실 공간",
-  },
-  {
-    src: "https://modo-phinf.pstatic.net/20230126_280/16746992422848hMvn_PNG/mosaHY6h2k.png?type=f353_353",
-    alt: "상담실 공간",
-    title: "상담실 공간",
+    title: "상담실 공간3",
   },
 ];
 
@@ -108,7 +93,7 @@ const Center = () => {
           <div className={styles.galleryContainer}>
             <motion.div
               className={styles.gallerySlide}
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 1, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: false, amount: 0.3 }}
               transition={{ duration: 0.8 }}
