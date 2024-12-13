@@ -78,40 +78,54 @@ const Center = () => {
   };
 
   return (
-    <section className={styles.center} id="center">
+    <motion.section
+      className={styles.center}
+      id="center"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ duration: 0.8 }}
+    >
       <div className={styles.container}>
         <motion.div
           className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className={styles.title}>쉼터 소개</h2>
           <p className={styles.subtitle}>편안한 분위기에서 마음의 휴식을 찾으세요</p>
         </motion.div>
 
-        <div className={styles.galleryWrapper}>
+        <motion.div
+          className={styles.galleryWrapper}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+        >
           <div className={styles.galleryContainer}>
             <motion.div
               className={styles.gallerySlide}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: false, amount: 0.3 }}
+              transition={{ duration: 0.8 }}
               animate={{
                 transform: isMobile
-                  ? `translateX(-${currentIndex * 100}%)` // 모바일에서는 단순히 100% 단위로 이동
+                  ? `translateX(-${currentIndex * 100}%)`
                   : `translateX(calc(-${currentIndex} * (33.333% + 2rem)))`,
-              }}
-              transition={{
-                duration: 0.4,
-                ease: [0.4, 0, 0.2, 1],
               }}
             >
               {galleryImages.map((image, index) => (
                 <motion.div
                   key={index}
                   className={styles.galleryItem}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.3 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <div className={styles.imageWrapper}>
                     <Image
@@ -129,7 +143,13 @@ const Center = () => {
               ))}
             </motion.div>
           </div>
-          <div className={styles.controlsContainer}>
+          <motion.div
+            className={styles.controlsContainer}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
             <motion.button
               className={`${styles.controlButton} ${currentIndex === 0 ? styles.disabled : ""}`}
               onClick={handlePrev}
@@ -150,10 +170,10 @@ const Center = () => {
             >
               →
             </motion.button>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

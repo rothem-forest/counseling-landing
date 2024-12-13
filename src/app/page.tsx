@@ -8,11 +8,13 @@ import FAQ from "@/components/sections/FAQ/FAQ";
 import Location from "@/components/sections/Location/Location";
 import Footer from "@/components/layout/Footer/Footer";
 import Center from "@/components/sections/Center/Center";
+import SelfDiagnosis from "@/components/sections/SelfDiagnosis/SelfDiagnosis";
 
 export default function Home() {
   return (
     <main>
       <Hero />
+      <SelfDiagnosis />
       <Services />
       <Counselor />
       <Center />

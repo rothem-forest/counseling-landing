@@ -1,0 +1,110 @@
+/* SelfDiagnosis.module.css */
+.diagnosis {
+  padding: 6rem 0;
+  background-color: var(--color-background);
+  position: relative;
+  overflow: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  flex-direction: row-reverse; /* 순서 변경을 위해 추가 */
+}
+
+.content {
+  flex: 1;
+  max-width: 600px;
+  text-align: right; /* 텍스트 오른쪽 정렬 추가 */
+}
+
+.title {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: var(--color-text);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.startButton {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.imageWrapper {
+  flex: 1;
+  max-width: 500px;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+@media (max-width: 968px) {
+  .container {
+    flex-direction: column;
+    gap: 3rem;
+    text-align: center;
+  }
+
+  .content {
+    max-width: 100%;
+    text-align: center; /* 모바일에서 가운데 정렬로 변경 */
+  }
+
+  .imageWrapper {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .diagnosis {
+    padding: 4rem 0;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .startButton {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .imageWrapper {
+    max-width: 300px;
+  }
+}

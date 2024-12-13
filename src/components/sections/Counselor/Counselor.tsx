@@ -23,7 +23,7 @@ const Counselor = () => {
               className={styles.imageWrapper}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.6 }}
             >
               <Image
@@ -38,7 +38,7 @@ const Counselor = () => {
               className={`${styles.imageWrapper} ${styles.imageSecond}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false, margin: "-50px" }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
               <Image
@@ -55,7 +55,7 @@ const Counselor = () => {
             className={styles.textContent}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: false, margin: "-50px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
             <h2 className={styles.title}>전문 심리상담사 소개</h2>
