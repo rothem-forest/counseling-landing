@@ -148,13 +148,15 @@
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-smooth);
+  width: 80%;
+  max-width: 400px;
 }
 
 .submitButton:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
   background: var(--gradient-accent);
-  color: var(--color-primary);
+  color: #fff;
 }
 
 /* 모달 스타일 */
@@ -264,6 +266,11 @@
 
   .radioLabel span::before {
     left: -2rem;
+  }
+  .radioLabel span {
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
   }
 
   .modalContent {
