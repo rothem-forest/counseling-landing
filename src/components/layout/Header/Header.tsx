@@ -19,8 +19,8 @@ const Header = () => {
     };
 
     const handleScroll = () => {
-      // reservation 페이지에서는 스크롤 효과 적용하지 않음
-      if (pathname === "/reservation") {
+      // 메인 페이지가 아니면 스크롤 효과 적용하지 않음
+      if (pathname !== "/") {
         setIsScrolled(true);
         return;
       }
@@ -77,7 +77,7 @@ const Header = () => {
 
   return (
     <motion.header
-      className={`${styles.header} ${isScrolled || pathname === "/reservation" ? styles.scrolled : ""}`}
+      className={`${styles.header} ${isScrolled || pathname !== "/" ? styles.scrolled : ""}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.3 }}

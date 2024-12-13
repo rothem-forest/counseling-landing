@@ -4,6 +4,7 @@
 import * as motion from "framer-motion/client";
 import styles from "./SelfDiagnosis.module.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const SelfDiagnosis = () => {
   const router = useRouter();
@@ -39,7 +40,7 @@ const SelfDiagnosis = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <img src="/images/girl.jpg" alt="자가진단 일러스트" className={styles.image} />
+          <Image src="/images/girl.jpg" alt="자가진단 일러스트" width={500} height={300} className={styles.image} />
         </motion.div>
       </div>
     </section>

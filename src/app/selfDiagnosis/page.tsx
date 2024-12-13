@@ -1,264 +1,261 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import styles from "./page.module.css";
 
 export default function SelfDiagnosisPage() {
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    gender: "",
-    maritalStatus: "",
-    occupation: "",
-    religion: "",
-    referralSource: "",
-    phone: "",
-    email: "",
-    hasPreviousCounseling: false,
-    previousCounselingDetails: "",
-    preferredDate: "",
-    message: "",
-  });
+  const [activeTab, setActiveTab] = useState("anxiety");
+  const [answers, setAnswers] = useState<number[]>(new Array(21).fill(0));
+  const [showResult, setShowResult] = useState(false);
+  const [totalScore, setTotalScore] = useState(0);
 
-  const counselingSteps = [
-    { step: "01", title: "상담예약" },
-    { step: "02", title: "상담료 납부" },
-    { step: "03", title: "초기상담" },
-    { step: "04", title: "상담 및 심리검사" },
-    { step: "05", title: "상담진행" },
-    { step: "06", title: "상담종료" },
-    { step: "07", title: "추후관리" },
+  const tabs = [
+    { id: "anxiety", label: "불안증 자가진단" },
+    { id: "depression", label: "우울증 자가진단" },
+    { id: "adhd", label: "ADHD 자가진단" },
+    { id: "social", label: "사회성 자가진단" },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // TODO: 폼 제출 로직 구현
-    console.log(formData);
+  const handleAnswerChange = (questionIndex: number, score: number) => {
+    const newAnswers = [...answers];
+    newAnswers[questionIndex] = score;
+    setAnswers(newAnswers);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type } = e.target;
-    const newValue = type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: newValue,
-    }));
+  const calculateResult = () => {
+    const sum = answers.reduce((acc, curr) => acc + curr, 0);
+    setTotalScore(sum);
+    setShowResult(true);
+  };
+
+  const getResultMessage = (score: number) => {
+    if (score <= 21) return "정상 범위입니다.";
+    if (score <= 42) return "경미한 수준입니다. 전문가와 상담을 고려해보세요.";
+    if (score <= 63) return "중등도 수준입니다. 전문가의 상담이 필요합니다.";
+    return "심각한 수준입니다. 즉시 전문가의 도움을 받으시기 바랍니다.";
+  };
+
+  const anxietyQuestions = [
+    "가끔씩 몸이 저리고 쑤시며 감각이 마비된 느낌을 받는다.",
+    "흥분된 느낌을 받는다.",
+    "가끔씩 다리가 떨리곤 한다.",
+    "편안하게 쉴 수가 없다.",
+    "매우 나쁜 일이 일어날 것 같은 두려움을 느낀다.",
+    "어지러움(현기증)을 느낀다.",
+    "가끔씩 심장이 두근거리고 빨리 뛴다.",
+    "침착하지 못하다.",
+    "자주 겁을 먹고 무서움을 느낀다.",
+    "신경이 과민되어 왔다.",
+    "가끔씩 숨이 막히고 질식할 것 같다.",
+    "자주 손이 떨린다.",
+    "안절부절 못해 한다.",
+    "미칠 것 같은 두려움을 느낀다.",
+    "가끔씩 숨쉬기 곤란할 때가 있다.",
+    "죽을 것 같은 두려움을 느낀다.",
+    "불안한 상태에 있다.",
+    "자주 소화가 안 되고 뱃속이 불편하다.",
+    "가끔씩 기절할 것 같다.",
+    "자주 얼굴이 붉어지곤 한다.",
+    "땀을 많이 흘린다.(더위로 인한 것은 제외)",
+  ];
+
+  const depressionQuestions = [
+    "일상적인 활동에 흥미를 잃었다.",
+    "우울하거나 절망적인 기분이 든다.",
+    "잠들기 어렵거나 너무 많이 잔다.",
+    "피곤하고 기운이 없다.",
+    "식욕이 없거나 과식을 한다.",
+  ];
+
+  const adhdQuestions = [
+    "일을 끝내기 전에 다른 일로 넘어간다.",
+    "집중하기 어렵다.",
+    "가만히 앉아있기 힘들다.",
+    "물건을 자주 잃어버린다.",
+    "충동적으로 행동한다.",
+  ];
+
+  const socialQuestions = [
+    "다른 사람들과 어울리는 것이 불편하다.",
+    "새로운 사람을 만나는 것이 두렵다.",
+    "대화를 시작하거나 이어가기 어렵다.",
+    "사회적 상황에서 불안을 느낀다.",
+    "다른 사람들의 시선이 신경 쓰인다.",
+  ];
+
+  const renderQuestions = (questions: string[]) => {
+    return questions.map((question, index) => (
+      <motion.div
+        key={index}
+        className={styles.questionBox}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3, delay: index * 0.1 }}
+      >
+        <h3>{`${index + 1}. ${question}`}</h3>
+        <div className={styles.options}>
+          {["전혀 느끼지 않았다.", "조금 느꼈다.", "상당히 느꼈다.", "심하게 느꼈다."].map((option, score) => (
+            <label key={score} className={`${styles.radioLabel} ${answers[index] === score ? styles.checked : ""}`}>
+              <input
+                type="radio"
+                name={`question-${index}`}
+                value={score}
+                checked={answers[index] === score}
+                onChange={() => handleAnswerChange(index, score)}
+              />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </motion.div>
+    ));
+  };
+
+  const renderResult = () => {
+    if (!showResult) return null;
+
+    return (
+      <motion.div
+        className={styles.result}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
+        <h2>진단 결과</h2>
+        <p>총점: {totalScore}점</p>
+        <p>{getResultMessage(totalScore)}</p>
+      </motion.div>
+    );
+  };
+
+  const renderContent = () => {
+    switch (activeTab) {
+      case "anxiety":
+        return (
+          <motion.div
+            key="anxiety"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2>불안증 자가진단</h2>
+            <p>아래 질문들에 답변해주세요.</p>
+            {renderQuestions(anxietyQuestions)}
+            <motion.button
+              className={styles.submitButton}
+              onClick={calculateResult}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              결과 보기
+            </motion.button>
+            {renderResult()}
+          </motion.div>
+        );
+      case "depression":
+        return (
+          <motion.div
+            key="depression"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2>우울증 자가진단</h2>
+            <p>아래 질문들에 답변해주세요.</p>
+            {renderQuestions(depressionQuestions)}
+            <motion.button
+              className={styles.submitButton}
+              onClick={calculateResult}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              결과 보기
+            </motion.button>
+            {renderResult()}
+          </motion.div>
+        );
+      case "adhd":
+        return (
+          <motion.div
+            key="adhd"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2>ADHD 자가진단</h2>
+            <p>아래 질문들에 답변해주세요.</p>
+            {renderQuestions(adhdQuestions)}
+            <motion.button
+              className={styles.submitButton}
+              onClick={calculateResult}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              결과 보기
+            </motion.button>
+            {renderResult()}
+          </motion.div>
+        );
+      case "social":
+        return (
+          <motion.div
+            key="social"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -20 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2>사회성 자가진단</h2>
+            <p>아래 질문들에 답변해주세요.</p>
+            {renderQuestions(socialQuestions)}
+            <motion.button
+              className={styles.submitButton}
+              onClick={calculateResult}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              결과 보기
+            </motion.button>
+            {renderResult()}
+          </motion.div>
+        );
+      default:
+        return null;
+    }
   };
 
   return (
     <main className={styles.main}>
       <div className={styles.container}>
         <motion.div
-          className={styles.stepsContainer}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className={styles.stepsTitle}>상담 진행 절차</h2>
-          <div className={styles.stepsList}>
-            {counselingSteps.map((step, index) => (
-              <motion.div
-                key={step.step}
-                className={styles.stepItem}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <span className={styles.stepNumber}>{step.step}</span>
-                <span className={styles.stepTitle}>{step.title}</span>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div
           className={styles.content}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className={styles.title}>상담 예약하기</h1>
-          <p className={styles.description}>전문 상담사와 함께하는 맞춤형 상담을 예약하세요</p>
-
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.formGroup}>
-              <input
-                type="text"
-                name="name"
-                placeholder="성함을 입력해주세요"
-                value={formData.name}
-                onChange={handleChange}
-                className={styles.input}
-                required
-              />
-            </div>
-
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <input
-                  type="number"
-                  name="age"
-                  placeholder="나이"
-                  value={formData.age}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <select name="gender" value={formData.gender} onChange={handleChange} className={styles.input} required>
-                  <option value="">성별 선택</option>
-                  <option value="male">남성</option>
-                  <option value="female">여성</option>
-                </select>
-              </div>
-            </div>
-
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <select
-                  name="maritalStatus"
-                  value={formData.maritalStatus}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                >
-                  <option value="">결혼여부 선택</option>
-                  <option value="single">미혼</option>
-                  <option value="married">기혼</option>
-                  <option value="divorced">이혼</option>
-                  <option value="widowed">사별</option>
-                </select>
-              </div>
-              <div className={styles.formGroup}>
-                <input
-                  type="text"
-                  name="occupation"
-                  placeholder="직업"
-                  value={formData.occupation}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <input
-                  type="text"
-                  name="religion"
-                  placeholder="종교"
-                  value={formData.religion}
-                  onChange={handleChange}
-                  className={styles.input}
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <select
-                  name="referralSource"
-                  value={formData.referralSource}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                >
-                  <option value="">상담 신청경로 선택</option>
-                  <option value="internet">인터넷 검색</option>
-                  <option value="recommendation">지인 추천</option>
-                  <option value="advertisement">광고</option>
-                  <option value="other">기타</option>
-                </select>
-              </div>
-            </div>
-
-            <div className={styles.formRow}>
-              <div className={styles.formGroup}>
-                <input
-                  type="tel"
-                  name="phone"
-                  placeholder="연락처"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                />
-              </div>
-              <div className={styles.formGroup}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="이메일"
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={styles.input}
-                  required
-                />
-              </div>
-            </div>
-
-            <div className={styles.formGroup}>
-              <label className={styles.checkbox}>
-                <input
-                  type="checkbox"
-                  name="hasPreviousCounseling"
-                  checked={formData.hasPreviousCounseling}
-                  onChange={handleChange}
-                />
-                <span>이전 상담 경험이 있습니다</span>
-              </label>
-            </div>
-
-            {formData.hasPreviousCounseling && (
-              <div className={styles.formGroup}>
-                <textarea
-                  name="previousCounselingDetails"
-                  placeholder="이전 상담 경험에 대해 간단히 설명해주세요"
-                  value={formData.previousCounselingDetails}
-                  onChange={handleChange}
-                  className={styles.textarea}
-                />
-              </div>
-            )}
-
-            <div className={styles.formGroup}>
-              <input
-                type="datetime-local"
-                name="preferredDate"
-                value={formData.preferredDate}
-                onChange={handleChange}
-                className={styles.input}
-                required
-              />
-            </div>
-
-            <div className={styles.formGroup}>
-              <textarea
-                name="message"
-                placeholder="상담하시고자 하는 내용을 자유롭게 작성해주세요"
-                value={formData.message}
-                onChange={handleChange}
-                className={styles.textarea}
-                required
-              />
-            </div>
-
-            <div className={styles.termsGroup}>
-              <label className={styles.checkbox}>
-                <input type="checkbox" required />
-                <span>개인정보 수집 및 이용에 동의합니다</span>
-              </label>
-            </div>
-
-            <motion.button
-              type="submit"
-              className={styles.submitButton}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              예약하기
-            </motion.button>
-          </form>
+          <h1 className={styles.title}>자가진단 테스트</h1>
+          <div className={styles.tabs}>
+            {tabs.map((tab) => (
+              <motion.button
+                key={tab.id}
+                className={`${styles.tab} ${activeTab === tab.id ? styles.activeTab : ""}`}
+                onClick={() => {
+                  setActiveTab(tab.id);
+                  setAnswers(new Array(21).fill(0));
+                  setShowResult(false);
+                }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {tab.label}
+              </motion.button>
+            ))}
+          </div>
+          <AnimatePresence mode="wait">{renderContent()}</AnimatePresence>
         </motion.div>
       </div>
     </main>
