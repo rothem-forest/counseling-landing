@@ -272,6 +272,9 @@
     text-align: center;
     padding-left: 0;
   }
+  .submitButton {
+    width: 100%;
+  }
 
   .modalContent {
     width: 95%;
@@ -290,6 +293,9 @@
     font-size: 1rem;
   }
   .questionBox {
-    padding: 1.5rem;
+    padding: 1rem;
+  }
+  .questionBox h3 {
+    font-size: 1.1rem;
   }
 }
