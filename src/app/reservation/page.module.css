@@ -173,10 +173,55 @@
     flex-direction: column;
     gap: 3rem;
   }
+  .content {
+    width: 100%;
+    padding: 1rem;
+    box-shadow: none;
+    background-color: transparent;
+  }
 
   .stepsContainer {
     position: static;
     width: 100%;
+  }
+
+  .stepsContainer {
+    margin-bottom: 1.5rem;
+    overflow-x: hidden;
+  }
+
+  .stepsTitle {
+    display: none;
+  }
+
+  .stepsList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.5rem;
+    padding: 0.25rem;
+  }
+
+  .stepItem {
+    padding: 0.75rem;
+    min-width: auto;
+    flex-direction: row;
+    text-align: left;
+    align-items: center;
+  }
+
+  .stepNumber {
+    font-size: 1rem;
+    min-width: 1.5rem;
+  }
+
+  .stepTitle {
+    font-size: 0.85rem;
+    line-height: 1.2;
+  }
+
+  .stepsTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
   }
 }
 
