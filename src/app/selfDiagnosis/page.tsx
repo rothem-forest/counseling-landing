@@ -3,12 +3,14 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import styles from "./page.module.css";
+import { FaRegSmile, FaRegMeh, FaRegFrown, FaRegDizzy } from "react-icons/fa";
 
 export default function SelfDiagnosisPage() {
   const [activeTab, setActiveTab] = useState("anxiety");
   const [answers, setAnswers] = useState<number[]>(new Array(21).fill(0));
-  const [showResult, setShowResult] = useState(false);
+  const [, setShowResult] = useState(false);
   const [totalScore, setTotalScore] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   const tabs = [
     { id: "anxiety", label: "불안증 자가진단" },
@@ -27,6 +29,14 @@ export default function SelfDiagnosisPage() {
     const sum = answers.reduce((acc, curr) => acc + curr, 0);
     setTotalScore(sum);
     setShowResult(true);
+    setShowModal(true);
+  };
+
+  const getResultIcon = (score: number) => {
+    if (score <= 21) return <FaRegSmile size={48} color="#27ae60" />;
+    if (score <= 42) return <FaRegMeh size={48} color="#f1c40f" />;
+    if (score <= 63) return <FaRegFrown size={48} color="#e67e22" />;
+    return <FaRegDizzy size={48} color="#e74c3c" />;
   };
 
   const getResultMessage = (score: number) => {
@@ -112,19 +122,34 @@ export default function SelfDiagnosisPage() {
     ));
   };
 
-  const renderResult = () => {
-    if (!showResult) return null;
+  const ResultModal = () => {
+    if (!showModal) return null;
 
     return (
       <motion.div
-        className={styles.result}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
+        className={styles.modalOverlay}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
-        <h2>진단 결과</h2>
-        <p>총점: {totalScore}점</p>
-        <p>{getResultMessage(totalScore)}</p>
+        <motion.div
+          className={styles.modalContent}
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.5, opacity: 0 }}
+        >
+          <div className={styles.modalHeader}>
+            <h2>진단 결과</h2>
+            <button className={styles.closeButton} onClick={() => setShowModal(false)}>
+              ✕
+            </button>
+          </div>
+          <div className={styles.modalBody}>
+            <div className={styles.resultIcon}>{getResultIcon(totalScore)}</div>
+            <p className={styles.resultScore}>총점: {totalScore}점</p>
+            <p className={styles.resultMessage}>{getResultMessage(totalScore)}</p>
+          </div>
+        </motion.div>
       </motion.div>
     );
   };
@@ -140,8 +165,6 @@ export default function SelfDiagnosisPage() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <h2>불안증 자가진단</h2>
-            <p>아래 질문들에 답변해주세요.</p>
             {renderQuestions(anxietyQuestions)}
             <motion.button
               className={styles.submitButton}
@@ -151,7 +174,9 @@ export default function SelfDiagnosisPage() {
             >
               결과 보기
             </motion.button>
-            {renderResult()}
+            <AnimatePresence>
+              <ResultModal />
+            </AnimatePresence>
           </motion.div>
         );
       case "depression":
@@ -163,8 +188,6 @@ export default function SelfDiagnosisPage() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <h2>우울증 자가진단</h2>
-            <p>아래 질문들에 답변해주세요.</p>
             {renderQuestions(depressionQuestions)}
             <motion.button
               className={styles.submitButton}
@@ -174,7 +197,9 @@ export default function SelfDiagnosisPage() {
             >
               결과 보기
             </motion.button>
-            {renderResult()}
+            <AnimatePresence>
+              <ResultModal />
+            </AnimatePresence>
           </motion.div>
         );
       case "adhd":
@@ -186,8 +211,6 @@ export default function SelfDiagnosisPage() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <h2>ADHD 자가진단</h2>
-            <p>아래 질문들에 답변해주세요.</p>
             {renderQuestions(adhdQuestions)}
             <motion.button
               className={styles.submitButton}
@@ -197,7 +220,9 @@ export default function SelfDiagnosisPage() {
             >
               결과 보기
             </motion.button>
-            {renderResult()}
+            <AnimatePresence>
+              <ResultModal />
+            </AnimatePresence>
           </motion.div>
         );
       case "social":
@@ -209,8 +234,6 @@ export default function SelfDiagnosisPage() {
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.5 }}
           >
-            <h2>사회성 자가진단</h2>
-            <p>아래 질문들에 답변해주세요.</p>
             {renderQuestions(socialQuestions)}
             <motion.button
               className={styles.submitButton}
@@ -220,7 +243,9 @@ export default function SelfDiagnosisPage() {
             >
               결과 보기
             </motion.button>
-            {renderResult()}
+            <AnimatePresence>
+              <ResultModal />
+            </AnimatePresence>
           </motion.div>
         );
       default:
@@ -247,6 +272,7 @@ export default function SelfDiagnosisPage() {
                   setActiveTab(tab.id);
                   setAnswers(new Array(21).fill(0));
                   setShowResult(false);
+                  setShowModal(false);
                 }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
