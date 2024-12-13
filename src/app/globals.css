@@ -20,6 +20,37 @@
   --color-error: #e74c3c;
   --color-success: #27ae60;
 
+  /* 확장된 색상 */
+  /* 추가된 서브컬러 */
+  --color-secondary: #6b8e23; /* Olive Green - 보조 테마 컬러 */
+  --color-secondary-light: #a3c593; /* Light Olive - 서브 텍스트/배경 */
+  --color-secondary-dark: #3c4e25; /* Deep Olive - 강조된 서브컬러 */
+
+  /* 강조 색상 */
+  --color-error: #b22222; /* Firebrick Red - 에러 강조 */
+  --color-warning: #ffcc00; /* Amber Yellow - 경고 */
+  --color-success: #3cb371; /* Medium Sea Green - 성공 메시지 */
+  --color-info: #4682b4; /* Steel Blue - 정보 강조 */
+
+  /* 그라데이션 */
+  --gradient-primary: linear-gradient(90deg, #2c5f2d, #4d7359); /* 그라데이션 효과 */
+  --gradient-accent: linear-gradient(45deg, #ddb771, #e1ede3); /* 포인트용 그라데이션 */
+
+  /* 중립 색상 */
+  --neutral-light: #f7f7f7; /* Soft Grey */
+  --neutral-medium: #dcdcdc; /* Gainsboro */
+  --neutral-dark: #2f4f4f; /* Dark Slate Grey */
+
+  /* 추가 포인트 */
+  --color-accent-dark: #a8d5ba; /* Teal Mint */
+  --color-accent-bright: #8fd175; /* Bright Green Accent */
+
+  /* 어두운 테마를 대비한 색상 */
+  --dark-background: #121212; /* 어두운 모드 배경 */
+  --dark-foreground: #e4e4e4; /* 어두운 모드 텍스트 */
+  --dark-primary: #1b3d1b; /* 어두운 모드 메인 컬러 */
+  --dark-highlight: #c9a460; /* 어두운 모드 포인트 컬러 */
+
   /* Shadows */
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
