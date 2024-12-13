@@ -123,6 +123,13 @@
     gap: 1rem;
   }
 
+  .title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+
   .headerWrapper {
     margin-bottom: 2rem;
   }
