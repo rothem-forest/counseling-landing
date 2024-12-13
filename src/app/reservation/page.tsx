@@ -21,6 +21,16 @@ export default function ReservationPage() {
     message: "",
   });
 
+  const counselingSteps = [
+    { step: "01", title: "상담예약" },
+    { step: "02", title: "상담료 납부" },
+    { step: "03", title: "초기상담" },
+    { step: "04", title: "상담 및 심리검사" },
+    { step: "05", title: "상담진행" },
+    { step: "06", title: "상담종료" },
+    { step: "07", title: "추후관리" },
+  ];
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // TODO: 폼 제출 로직 구현
@@ -39,6 +49,29 @@ export default function ReservationPage() {
   return (
     <main className={styles.main}>
       <div className={styles.container}>
+        <motion.div
+          className={styles.stepsContainer}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className={styles.stepsTitle}>상담 진행 절차</h2>
+          <div className={styles.stepsList}>
+            {counselingSteps.map((step, index) => (
+              <motion.div
+                key={step.step}
+                className={styles.stepItem}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <span className={styles.stepNumber}>{step.step}</span>
+                <span className={styles.stepTitle}>{step.title}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         <motion.div
           className={styles.content}
           initial={{ opacity: 0, y: 20 }}
