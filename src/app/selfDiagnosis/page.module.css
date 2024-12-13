@@ -241,15 +241,15 @@
   }
 
   .tabs {
-    display: flex;
-    white-space: nowrap;
-    gap: 0.5rem;
-    -webkit-overflow-scrolling: touch;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
   }
 
   .tab {
-    flex: 0 0 auto;
-    padding: 0.875rem 1.5rem;
+    width: 100%;
+    padding: 0.875rem 1rem;
+    text-align: center;
   }
 
   .options {
