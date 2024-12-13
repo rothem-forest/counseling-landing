@@ -57,7 +57,7 @@ const FAQ = () => {
           className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           <h2 className={styles.title}>자주 묻는 질문</h2>
@@ -65,10 +65,10 @@ const FAQ = () => {
         </motion.div>
 
         <motion.div
-          className={styles.faqList}
+          className={styles.header}
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false, amount: 0.3 }}
           transition={{ duration: 0.6 }}
         >
           {faqItems.map((item) => (
