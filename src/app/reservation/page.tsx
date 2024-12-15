@@ -21,6 +21,8 @@ export default function ReservationPage() {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const counselingSteps = [
     { step: "01", title: "상담예약" },
     { step: "02", title: "상담료 납부" },
@@ -31,10 +33,49 @@ export default function ReservationPage() {
     { step: "07", title: "추후관리" },
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 폼 제출 로직 구현
-    console.log(formData);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        alert(data.message);
+        // 폼 초기화
+        setFormData({
+          name: "",
+          age: "",
+          gender: "",
+          maritalStatus: "",
+          occupation: "",
+          religion: "",
+          referralSource: "",
+          phone: "",
+          email: "",
+          hasPreviousCounseling: false,
+          previousCounselingDetails: "",
+          preferredDate: "",
+          message: "",
+        });
+      } else {
+        throw new Error(data.message);
+      }
+    } catch (error) {
+      console.log(error);
+      alert("예약 신청 중 오류가 발생했습니다. 다시 시도해주세요.");
+      console.error("예약 신청 오류:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -255,8 +296,9 @@ export default function ReservationPage() {
               className={styles.submitButton}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              disabled={isSubmitting}
             >
-              예약하기
+              {isSubmitting ? "예약 신청 중..." : "예약하기"}
             </motion.button>
           </form>
         </motion.div>
