@@ -18,7 +18,7 @@ interface ReservationRequest {
 }
 
 export async function GET() {
-  console.log("GET 요청");
+  console.log("GET 요청!");
   return NextResponse.json({ message: "Hello World" });
 }
 
