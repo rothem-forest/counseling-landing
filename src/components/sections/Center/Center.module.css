@@ -6,7 +6,7 @@
 }
 
 .container {
-  max-width: 1800px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 2rem;
 }
@@ -34,7 +34,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
-  max-width: 1800px;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 4rem;
   padding-bottom: 6rem;
@@ -51,7 +51,9 @@
 .imageWrapper {
   position: relative;
   width: 100%;
+  max-width: var(--max-width);
   height: 100%;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -113,8 +115,9 @@
 
 @media (max-width: 1440px) {
   .container,
-  .galleryGrid {
-    max-width: 1400px;
+  .galleryGrid,
+  .imageWrapper {
+    max-width: var(--max-width-lg);
   }
 }
 
@@ -128,8 +131,9 @@
   }
 
   .container,
-  .galleryGrid {
-    max-width: 900px;
+  .galleryGrid,
+  .imageWrapper {
+    max-width: var(--max-width-md);
     padding: 0 2rem;
   }
 
@@ -161,7 +165,8 @@
   }
 
   .container,
-  .galleryGrid {
+  .galleryGrid,
+  .imageWrapper {
     max-width: 100%;
     padding: 0 1.5rem;
   }
@@ -178,9 +183,6 @@
 
 .galleryWrapper {
   position: relative;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
 }
 
 .galleryContainer {
