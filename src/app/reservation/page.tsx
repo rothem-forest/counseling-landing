@@ -3,9 +3,26 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import styles from "./page.module.css";
+import { supabase } from "@/lib/supabase";
+
+interface Contact {
+  name: string;
+  age: string;
+  gender: string;
+  maritalStatus: string;
+  occupation: string;
+  religion: string;
+  referralSource: string;
+  phone: string;
+  email: string;
+  hasPreviousCounseling: boolean;
+  previousCounselingDetails: string;
+  preferredDate: string;
+  message: string;
+}
 
 export default function ReservationPage() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<Contact>({
     name: "",
     age: "",
     gender: "",
@@ -38,6 +55,7 @@ export default function ReservationPage() {
     setIsSubmitting(true);
 
     try {
+      // API 서버로 데이터 전송
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -48,8 +66,30 @@ export default function ReservationPage() {
 
       const data = await response.json();
 
+      // Supabase에 데이터 저장
+      const { error } = await supabase.from("contacts").insert([
+        {
+          name: formData.name,
+          age: formData.age,
+          gender: formData.gender,
+          marital_status: formData.maritalStatus,
+          occupation: formData.occupation,
+          religion: formData.religion,
+          referral_source: formData.referralSource,
+          phone: formData.phone,
+          email: formData.email,
+          has_previous_counseling: formData.hasPreviousCounseling,
+          previous_counseling_details: formData.previousCounselingDetails,
+          preferred_date: formData.preferredDate,
+          message: formData.message,
+          created_at: new Date().toISOString(),
+        },
+      ]);
+
+      if (error) throw error;
+
       if (response.ok) {
-        alert(data.message);
+        alert("예약이 성공적으로 접수되었습니다.");
         // 폼 초기화
         setFormData({
           name: "",
@@ -150,8 +190,8 @@ export default function ReservationPage() {
               <div className={styles.formGroup}>
                 <select name="gender" value={formData.gender} onChange={handleChange} className={styles.input} required>
                   <option value="">성별 선택</option>
-                  <option value="male">남성</option>
-                  <option value="female">여성</option>
+                  <option value="남성">남성</option>
+                  <option value="여성">여성</option>
                 </select>
               </div>
             </div>
@@ -166,10 +206,10 @@ export default function ReservationPage() {
                   required
                 >
                   <option value="">결혼여부 선택</option>
-                  <option value="single">미혼</option>
-                  <option value="married">기혼</option>
-                  <option value="divorced">이혼</option>
-                  <option value="widowed">사별</option>
+                  <option value="미혼">미혼</option>
+                  <option value="기혼">기혼</option>
+                  <option value="이혼">이혼</option>
+                  <option value="사별">사별</option>
                 </select>
               </div>
               <div className={styles.formGroup}>
@@ -205,10 +245,10 @@ export default function ReservationPage() {
                   required
                 >
                   <option value="">상담 신청경로 선택</option>
-                  <option value="internet">인터넷 검색</option>
-                  <option value="recommendation">지인 추천</option>
-                  <option value="advertisement">광고</option>
-                  <option value="other">기타</option>
+                  <option value="인터넷">인터넷 검색</option>
+                  <option value="지인추천">지인 추천</option>
+                  <option value="광고">광고</option>
+                  <option value="기타">기타</option>
                 </select>
               </div>
             </div>
