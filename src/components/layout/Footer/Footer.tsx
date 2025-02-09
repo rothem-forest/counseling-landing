@@ -10,12 +10,12 @@ const Footer = () => {
         <div className={styles.content}>
           <div className={styles.branding}>
             <Link href="/" className={styles.logo}>
-              로뎀숲
+              로뎀숲 심리연구소
             </Link>
             <p className={styles.description}>
               마음의 평안과 성장을 함께하는
               <br />
-              로뎀숲 심리상담센터
+              로뎀숲 심리연구소
             </p>
           </div>
 
@@ -24,15 +24,19 @@ const Footer = () => {
               <h3 className={styles.sectionTitle}>상담 문의</h3>
               <ul className={styles.contactList}>
                 <li>
-                  <strong>강남점</strong>
-                  <p>02-1234-5678</p>
+                  <strong>창원점</strong>
+                  <a href="tel:01024763448">010-2476-3448</a>
                 </li>
                 <li>
-                  <strong>분당점</strong>
-                  <p>031-987-6543</p>
+                  <strong>김해점</strong>
+                  <a href="tel:0553234523">055-323-4523</a>
                 </li>
                 <li>
-                  <strong>상담시간</strong>
+                  <strong>울산점</strong>
+                  <a href="tel:01064007188">010-6400-7188</a>
+                </li>
+                <li>
+                  <strong>예약 문의시간</strong>
                   <p>평일 10:00 - 20:00</p>
                   <p>토요일 10:00 - 17:00</p>
                 </li>
@@ -73,18 +77,13 @@ const Footer = () => {
                     Blog
                   </a>
                 </li>
-                <li>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
-                    YouTube
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
         </div>
 
         <div className={styles.bottom}>
-          <p className={styles.copyright}>© {currentYear} 로뎀숲 심리상담센터. All rights reserved.</p>
+          <p className={styles.copyright}>© {currentYear} 로뎀숲 심리상담연구소. All rights reserved.</p>
           <div className={styles.legal}>
             <Link href="/privacy">개인정보처리방침</Link>
             <span className={styles.divider}>|</span>

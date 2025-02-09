@@ -55,7 +55,7 @@ const Services = () => {
             viewport={{ once: false }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className={styles.title}>로뎀숲만의 서비스</h2>
+            <h2 className={styles.title}>로뎀숲 심리연구소 상담센터의 프로그램</h2>
             <p className={styles.subtitle}>당신의 마음에 가장 필요한 상담을 제공합니다.</p>
           </motion.div>
         </div>

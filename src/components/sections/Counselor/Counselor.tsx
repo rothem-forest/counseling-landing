@@ -5,7 +5,7 @@ import styles from "./Counselor.module.css";
 import Image from "next/image";
 
 // const careerHistory = [
-//   { year: "2024", description: "로뎀숲 심리상담센터 대표" },
+//   { year: "2024", description: "로뎀숲 심리연구소 대표" },
 //   { year: "2023", description: "한국심리학회 상담심리사 1급" },
 //   { year: "2022", description: "서울대학교 심리상담학과 박사" },
 //   { year: "2020", description: "국제심리상담센터 수석상담사" },

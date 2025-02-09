@@ -74,7 +74,7 @@ const Hero = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              로뎀숲
+              로뎀숲 심리연구소
             </motion.span>
           </motion.h1>
 
@@ -84,7 +84,7 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            로뎀숲과 함께
+            로뎀숲 심리연구소과 함께
             <br />
             마음의 안정과 성장을 경험하세요
           </motion.p>

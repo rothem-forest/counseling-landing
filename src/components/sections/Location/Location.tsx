@@ -8,7 +8,6 @@ interface Branch {
   name: string;
   address: string;
   tel: string;
-  hours: string;
   location: {
     lat: number;
     lng: number;
@@ -18,10 +17,9 @@ interface Branch {
 const branches: Branch[] = [
   {
     id: 1,
-    name: "로뎀숲 강남점",
-    address: "서울특별시 강남구 테헤란로 123 로뎀빌딩 5층",
-    tel: "02-1234-5678",
-    hours: "평일 10:00 - 20:00 / 토요일 10:00 - 17:00 / 일요일 휴무",
+    name: "창원점",
+    address: "경남 창원시 성산구 용지로 153번길 3 창원오피스텔 512호",
+    tel: "010-2476-3448",
     location: {
       lat: 37.4967,
       lng: 127.0276,
@@ -29,10 +27,19 @@ const branches: Branch[] = [
   },
   {
     id: 2,
-    name: "로뎀숲 분당점",
-    address: "경기도 성남시 분당구 판교역로 456 로뎀타워 8층",
-    tel: "031-987-6543",
-    hours: "평일 10:00 - 20:00 / 토요일 10:00 - 17:00 / 일요일 휴무",
+    name: "김해점",
+    address: "김해시 계동로 129번길 42-8 101호",
+    tel: "055-323-4523",
+    location: {
+      lat: 37.3947,
+      lng: 127.1119,
+    },
+  },
+  {
+    id: 2,
+    name: "울산점",
+    address: "울산광역시 남구 신정로203번길 61 두산위브더제니스 102호 514호",
+    tel: "010-6400-7188",
     location: {
       lat: 37.3947,
       lng: 127.1119,
@@ -98,7 +105,7 @@ export default function Location() {
           transition={{ duration: 0.6 }}
         >
           <h2 className={styles.title}>오시는 길</h2>
-          <p className={styles.subtitle}>편안한 상담을 위한 로뎀숲 상담센터 위치를 안내해드립니다</p>
+          <p className={styles.subtitle}>편안한 상담을 위한 로뎀숲 심리연구소 위치를 안내해드립니다</p>
         </motion.div>
 
         <div className={styles.content}>
@@ -132,11 +139,6 @@ export default function Location() {
                 </p>
                 <p style={{ marginBottom: "0.5rem" }}>
                   <strong>전화:</strong> {branch.tel}
-                </p>
-                <p>
-                  <strong>영업시간:</strong>
-                  <br />
-                  {branch.hours}
                 </p>
               </motion.div>
             ))}

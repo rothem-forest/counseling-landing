@@ -87,7 +87,7 @@ const Header = () => {
     >
       <div className={styles.container}>
         <Link href="/" className={styles.logo}>
-          로뎀숲
+          로뎀숲 심리 연구소
         </Link>
 
         {!isMobile ? (
