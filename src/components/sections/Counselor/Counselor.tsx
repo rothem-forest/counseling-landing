@@ -34,7 +34,7 @@ const Counselor = () => {
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
-            <motion.div
+            {/* <motion.div
               className={`${styles.imageWrapper} ${styles.imageSecond}`}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ const Counselor = () => {
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-            </motion.div>
+            </motion.div> */}
           </div>
 
           <motion.div

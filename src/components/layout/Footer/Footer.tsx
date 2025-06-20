@@ -68,11 +68,6 @@ const Footer = () => {
               <h3 className={styles.sectionTitle}>SNS</h3>
               <ul className={styles.socialList}>
                 <li>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
-                    Instagram
-                  </a>
-                </li>
-                <li>
                   <a href="https://blog.naver.com" target="_blank" rel="noopener noreferrer">
                     Blog
                   </a>

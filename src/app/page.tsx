@@ -15,9 +15,9 @@ export default function Home() {
       <SelfDiagnosis />
       <Services />
       <Counselor />
-      <Center />
+      {/* <Center /> */}
       <Blog />
-      <Location />
+      <Location id="location" />
       <FAQ />
       <Footer />
     </main>

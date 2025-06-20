@@ -95,7 +95,7 @@ export default function Location() {
   }, []);
 
   return (
-    <section className={styles.location}>
+    <section className={styles.location} id="location">
       <div className={styles.container}>
         <motion.div
           className={styles.header}
