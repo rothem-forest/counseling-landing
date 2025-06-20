@@ -34,14 +34,14 @@ const SelfDiagnosis = () => {
           </motion.button>
         </motion.div>
 
-        <motion.div
+        {/* <motion.div
           className={styles.imageWrapper}
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <Image src="/images/girl.jpg" alt="자가진단 일러스트" width={500} height={300} className={styles.image} />
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   );
