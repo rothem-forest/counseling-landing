@@ -4,7 +4,7 @@
 import * as motion from "framer-motion/client";
 import styles from "./SelfDiagnosis.module.css";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+// import Image from "next/image";
 
 const SelfDiagnosis = () => {
   const router = useRouter();

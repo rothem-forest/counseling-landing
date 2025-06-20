@@ -5,7 +5,7 @@ import Blog from "@/components/sections/Blog/Blog";
 import FAQ from "@/components/sections/FAQ/FAQ";
 import Location from "@/components/sections/Location/Location";
 import Footer from "@/components/layout/Footer/Footer";
-import Center from "@/components/sections/Center/Center";
+// import Center from "@/components/sections/Center/Center";
 import SelfDiagnosis from "@/components/sections/SelfDiagnosis/SelfDiagnosis";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       <Counselor />
       {/* <Center /> */}
       <Blog />
-      <Location id="location" />
+      <Location />
       <FAQ />
       <Footer />
     </main>
