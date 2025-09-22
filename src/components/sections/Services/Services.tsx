@@ -22,14 +22,14 @@ const serviceCards: ServiceCard[] = [
     image: "/images/기업상담.jpg",
   },
   {
-    title: "부부상담",
+    title: "부부·커플 상담",
     description: "부부간의 소통을 개선하고 친밀한 관계를 회복하도록 돕습니다",
     image: "/images/부부상담.jpg",
   },
   {
-    title: "커플상담",
-    description: "연인 관계의 갈등을 해결하고 더 깊은 이해와 신뢰를 형성합니다",
-    image: "/images/커플상담.jpg",
+    title: "뇌파 검사 및 상담",
+    description: "파낙토스 뇌파 검사를 통해 개인의 뇌파 특성을 분석하고 그에 맞는 상담을 제공합니다",
+    image: "/images/뇌파검사.png",
   },
   {
     title: "청소년 아동상담",
@@ -37,9 +37,9 @@ const serviceCards: ServiceCard[] = [
     image: "/images/아동상담.jpg",
   },
   {
-    title: "프로그램상담",
-    description: "가족 구성원 간의 이해를 높이고 화목한 가정을 만듭니다",
-    image: "/images/가족상담.jpg",
+    title: "집단상담",
+    description: "다양한 사람들과 함께 소통하며 자기이해와 관계의 지혜를 키우는 집단 상담 프로그램을 제공합니다",
+    image: "/images/집단상담.png",
   },
 ];
 

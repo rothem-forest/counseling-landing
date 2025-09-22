@@ -44,7 +44,7 @@ const Header = () => {
     { label: "서비스", href: "/#services" },
     { label: "상담사", href: "/#counselor" },
     { label: "무료진단", href: "/selfDiagnosis" },
-    { label: "쉼터", href: "/#center" },
+    // { label: "쉼터", href: "/#center" },
     { label: "블로그", href: "/#blog" },
     { label: "오시는길", href: "/#location" },
     { label: "FAQ", href: "/#faq " },
