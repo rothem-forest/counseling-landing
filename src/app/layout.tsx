@@ -47,7 +47,7 @@ export default function RootLayout({
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
         />
         <meta name="naver-site-verification" content="네이버 사이트 인증 코드" />
-        <link rel="canonical" href="https://로뎀숲 심리 연구소.com" />
+        <link rel="canonical" href="https://rothemforest.com" />
       </head>
       <body style={{ fontFamily: "Pretendard, sans-serif" }}>
         <Header />
